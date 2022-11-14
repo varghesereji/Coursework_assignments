@@ -1,0 +1,828 @@
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+OPTIONS: tags:t tasks:t text:t timestamp:t toc:nil todo:t |:t num:nil date:nil
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{titlesec}
+# #+LATEX_HEADER: \usepackage{subfigure}
+#+LATEX_HEADER: \usepackage{caption}
+#+LATEX_HEADER: \usepackage{subcaption}
+#+LATEX_HEADER: \usepackage{lipsum}
+
+# #+bibliography: References.bib
+
+#+TITLE: Classical and Quantum Optics
+#+SUBTITLE: Assignment-1 Answers
+#+AUTHOR: Varghese Reji
+
+* Problem 1
+- (a) :: We know that,
+#+NAME: FT
+\begin{equation}
+\mathcal{F}\{g(x,y)\} = \int_{-\infty}^\infty \int_{-\infty}^\infty dxdy g(x,y) e^{-2\pi i(f_Xx+f_Yy)}
+\end{equation}
+
+Then, we can write,
+ $$\mathcal{F}\mathcal{F}\{g(x,y)\} = \int_{-\infty}^\infty \int_{-\infty}^\infty df_X df_Y ~e^{-2\pi i(f_Xx+f_Yy)} \int_{-\infty}^\infty \int_{-\infty}^\infty dx'dy' ~g(x',y') e^{-2\pi i(f_Xx'+f_Yy')}$$
+
+ By interchanging the order of integration,
+
+ #+NAME: interchange
+ \begin{equation}
+\begin{split}
+\mathcal{F}\mathcal{F}\{g(x,y)\} = & \int_{-\infty}^\infty \int_{-\infty}^\infty dx'dy'~g(x',y') \int_{-\infty}^\infty \int_{-\infty}^\infty df_Xdf_Ye^{-2\pi i(f_X(x'+x)+f_Y(y'+y))} \\
+\end{split}
+\end{equation}
+
+But we have the identity,
+
+#+NAME: delta_euler
+\begin{equation}
+\delta(x-x') = \frac{1}{2\pi} \int_{-infty}^\infty dp e^{ip(x-x')}
+\end{equation}
+
+Using this, we can write [[interchange]] as
+ \begin{equation}
+\begin{split}
+\mathcal{F}\mathcal{F}\{g(x,y)\} = & \int_{-\infty}^\infty \int_{-\infty}^\infty dx'dy'~g(x',y') \delta(x+x',y+y') \\
+= & g(-x,-y)
+\end{split}
+\end{equation}
+
+So, we can write, $$\mathcal{F}\mathcal{F}\{g(x,y)\} = g(-x,-y)$$
+
+Similerly,
+
+\begin{equation*}
+\begin{split}
+\mathcal{F}^{-1}\mathcal{F}^{-1}\{g(x,y)\} = & \int_{-\infty}^\infty \int_{-\infty}^\infty df_X df_Y ~e^{2\pi i(f_Xx+f_Yy)} \int_{-\infty}^\infty \int_{-\infty}^\infty dx'dy' ~g(x',y') e^{2\pi i(f_Xx'+f_Yy')}\\
+= & \int_{-\infty}^\infty \int_{-\infty}^\infty dx'dy'~g(x',y') \int_{-\infty}^\infty \int_{-\infty}^\infty df_Xdf_Ye^{2\pi i(f_X(x'+x)+f_Y(y'+y))} \\
+= & \int_{-\infty}^\infty \int_{-\infty}^\infty dx'dy'~g(x',y') \delta(x+x',y+y') \\
+= & g(-x,-y)
+\end{split}
+\end{equation*}
+
+Then,
+
+$$\mathcal{F}\mathcal{F}\{g(x,y)\} = \mathcal{F}^{-1}\mathcal{F}^{-1}\{g(x,y)\} = g(-x,-y)$$
+
+- (b) :: We can write the convolution of two functions as
+
+#+NAME: convolution
+\begin{equation}
+g(t)\otimes h(t) = \int_{-\infty}^{\infty} d\tau~g(\tau) h(t-\tau)
+\end{equation}
+
+So, the given fucntion can be written as
+
+$$\mathcal{F}\{g(x,y)\} \otimes \mathcal{F}\{h(x,y)\} = G(f_X,f_Y) \otimes H(f_X,f_Y) $$
+
+Using equation [[convolution]], we can write this as,
+#+NAME: Convolution
+\begin{equation}
+G(f_X,f_Y) \otimes H(f_X,f_Y) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} dF_X dF_Y G(F_X,F_Y) H(f_X-F_X,f_Y-F_Y)
+\end{equation}
+
+Let us take the inverse transform of this.
+
+\begin{equation*}
+\begin{split}
+& \mathcal{F}^{-1}  \{G(f_X,f_Y)\otimes H(f_X,f_Y)\} \\ = & \mathcal{F}^{-1}\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} dF_X dF_Y G(F_X,F_Y) H(f_X-F_X,f_Y-F_Y) \\
+= & \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} dF_X dF_Y G(F_X,F_Y) \mathcal{F}^{-1}\{H(f_X-F_X,f_Y-F_Y)\} \\
+= & \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} dF_X dF_Y G(F_X,F_Y) \exp\left(2\pi i\left[F_Xx+F_Yy\right]\right) \\  & ~~~~~~~~ \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} df_X df_Y H(f_X-F_X,f_Y-F_Y)\exp\left(2\pi i\left[(f_X-F_X)x+(f_Y-F_Y)y\right] \right) \\
+= & \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} dF_X dF_Y G(F_X,F_Y) h(x,y) \\
+= & g(x,y) h(x,y)
+\end{split}
+\end{equation*}
+
+$\therefore$
+
+$$\mathcal{F}\{g(x,y)f(x,y) = \mathcal{F}\{g(x,y)\}\otimes \mathcal{F}\{h(x,y)\}$$
+
+- (c) :: $$\mathcal{F}\{\nabla^2g(x,y)\}=-4\pi^2(f_x^2+f_y^2)\mathcal{F}\{g(x,y)\}$$ 
+
+We know that:
+
+#+Name: Greens_identity
+\begin{equation}
+\int_V\left(\psi\vec{\nabla}^2\phi+\vec{\nabla}\psi\cdot\vec{\nabla}\phi\right)dV=\oint_S\psi\vec{\nabla}\phi\cdot d\vec{S}
+\end{equation}
+
+Let us take $\psi = e^{-2\pi i\left(f_xx+f_yy\right)}$ and $\phi = g(x,y)$.
+
+But here, we can assume that value of $g$ is really small at large $x$ and $y$. Gradiance of it also can be neglected. So the RHS of equ [[Greens_identity]] will be 0 when we take the closed integral along a large closed surface which includes the volume of integration in LHS.
+
+Then, we can write,
+#+NAME: Greens_red
+\begin{equation}
+\begin{split}
+\int_V\psi\vec{\nabla}^2\phi dV= & -\int_V\vec{\nabla}\psi\cdot\vec{\nabla}\phi dV \\
+= & \int_V\phi\vec{\nabla}^2\psi dV 
+\end{split}
+\end{equation}
+
+Then, we can write,
+
+#+NAME: FT_laplacian
+\begin{equation*}
+\begin{split}
+\mathcal{F}(\nabla^2g(x,y)) = & \int_{-\infty}^\infty dxdy~ e^{-2\pi i(f_Xx+f_Xx)}\nabla^2g(x,y) \\ = & \int_{-\infty}^\infty dxdy~ g(x,y)\nabla^2e^{-2\pi i(f_Xx+f_Xx)} \\ 
+= & -4\pi^2(f_X^2+f_Y^2) \int_{-\infty}^\infty dxdy~ g(x,y)\nabla^2e^{-2\pi i(f_Xx+f_Xx)} \\
+= & -4\pi^2(f_X^2+f_Y^2)\mathcal{F}\{g(x,y)\}
+\end{split}
+\end{equation*}
+
+#+LATEX: \newpage
+* Problem 2
+- (a) :: Given $g_R(r)=\delta(r-r_0)$.
+
+$$g(u,v)=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} f(r) e^{-2\pi i\left(ux+vy\right)} dxdy$$
+
+Let us take,
+
+\begin{equation*}
+\begin{split}
+x+iy = & re^{i\theta}\\
+u+iv = & \rho e^{i\phi}
+\end{split}
+\end{equation*}
+
+Then,
+
+\begin{equation*}
+\begin{split}
+x = & r\cos\theta\\
+y = & r\sin\theta\\
+r = & \sqrt{x^2+y^2}\\
+u = & \rho\cos\phi\\
+v = & \rho\sin\phi \\
+\rho = & \sqrt{u^2+v^2}
+\end{split}
+\end{equation*}
+
+Then, we can write,
+
+\begin{equation*}
+\begin{split}
+g(\rho) = & \int_0^\infty\int_0^{2\pi} f(r)e^{-2\pi ir\rho\left(\cos\phi\cos\theta+\sin\phi\sin\theta\right)}rdrd\theta \\
+= & \int_0^\infty\int_0^{2\pi} f(r)e^{-2\pi ir\rho\cos\left(\theta-\phi\right)} rdrd\theta \\
+= & \int_0^\infty\int_{-\phi}^{2\pi-\phi} f(r)e^{-2\pi ir\rho\cos\theta}rdrd\theta \\
+= & \int_0^\infty\int_{0}^{2\pi} f(r)e^{-2\pi ir\rho\cos\theta}rdrd\theta \\
+= & \int_0^\infty f(r) \left[\int_0^{2\pi}e^{-2\pi ir\rho\cos\theta}d\theta\right]rdr \\
+= & 2\pi\int_0^\infty f(r)J_0\left(2\pi \rho r\right) rdr
+\end{split}
+\end{equation*}
+
+So,
+
+#+NAME: FB_tfm
+\begin{equation}
+g(\rho) = 2\pi\int_0^\infty f(r)J_0\left(2\pi \rho r\right) rdr
+\end{equation}
+
+
+Here, $f(r)=g_R(r)=\delta(r-r_0)$.
+
+Then, 
+
+\begin{equation*}
+\begin{split}
+\mathcal{B}\{g_R(r)\} = & g(\rho) \\
+= & 2\pi\int_0^\infty f(r)J_0\left(2\pi \rho r\right) rdr \\
+= & 2\pi\int_0^\infty \delta(r-r_0)J_0\left(2\pi \rho r\right) rdr \\
+= & 2\pi r_0J_0\left(2\pi \rho r_0\right)
+\end{split}
+\end{equation*}
+
+$\therefore$
+
+$$\mathcal{B}\{g_R(r)\} = 2\pi r_0J_0\left(2\pi \rho r_0\right) $$
+
+- (b) :: $g_R(r) = 1 for a\leq r \leq 1$ and zero elsewhere.
+
+We have the identity,
+
+#+NAME: J_identity
+\begin{equation}
+\int_0^x x'J_0(x') dx' = xJ_1(x)
+\end{equation}
+
+So,
+
+\begin{equation*}
+\begin{split}
+\mathcal{B}\{g_R(r)\} = & 2\pi \int_a^1 J_0\left(2\pi \rho r\right) rdr \\
+= & 2\pi\left[ \int_0^1 J_0\left(2\pi \rho r\right) rdr -  \int_0^a J_0\left(2\pi \rho r\right) rdr\right]\\
+= & \frac{1}{2\pi\rho^2}\left[ \int_0^1 J_0\left(2\pi \rho r\right) (2\pi\rho r)(2\pi\rho dr) -  \int_0^a J_0\left(2\pi \rho r\right) (2\pi\rho r)(2\pi\rho dr)\right]\\
+\end{split}
+\end{equation*}
+
+Let, $x = 2\pi\rho r$. Then, when $r=a, $x=2\pi\rho a$. $\Rightarrow$ $a=\frac{x}{2\pi\rho}$. Apply same for $r=1$.
+
+Then,
+
+\begin{equation*}
+\begin{split}
+\mathcal{B}\{g_R(r)\} = & \frac{1}{4\pi^2\rho^2}\left[ \int_0^{1} J_0\left(2\pi \rho r\right) (2\pi\rho r)(2\pi\rho dr) -  \int_0^a J_0\left(2\pi \rho r\right) (2\pi\rho r)(2\pi\rho dr)\right]\\
+= & \frac{1}{2\pi\rho^2} \left[\int_0^{2\pi\rho} J_0\left(x\right) xdx - \int_0^{2\pi\rho a} J_0\left(x\right) xdx\right] \\
+= &  \frac{1}{2\pi\rho^2}\left[2\pi\rho J_1(2\pi\rho)-2\pi\rho a J_1(2\pi\rho a)\right] \\
+= &  \frac{1}{\rho}\left[J_1(2\pi\rho)-a J_1(2\pi\rho a)\right]
+\end{split}
+\end{equation*}
+
+
+$\therefore$
+
+$$\mathcal{B}\{g_R(r)\}=\frac{J_1(2\pi\rho)-a J_1(2\pi\rho a)}{\rho}$$
+
+- (c) :: Given, $\mathcal{B}\{g_R(r)\} = G(\rho)$.
+
+From equ [[FB_tfm]], $$g(\rho) = 2\pi\int_0^\infty g_R(r)J_0\left(2\pi \rho r\right) rdr $$
+
+Here, $g_R(r)\rightarrow g_R(ar)$
+$\Rightarrow$
+
+\begin{equation*}
+\begin{split}
+\mathcal{B}\{g_R(ar)\} = &  2\pi\int_0^\infty g_R(ar)J_0\left(2\pi \rho r\right) rdr \\ 
+= &  2\pi\int_0^\infty g_R(ar)J_0\left(2\pi a \left(\frac{\rho}{a}\right) r\right) \left(\frac{ar}{a}\right)\frac{adr}{a} \qquad\qquad (ra\rightarrow x) \\ 
+= &  \frac{1}{a^2}2\pi\int_0^\infty g_R(a)J_0\left(2\pi  \left(\frac{\rho}{a} x\right)\right) xdx \\
+= & \frac{1}{a^2}G\left(\frac{\rho}{a}\right)
+\end{split}
+\end{equation*}
+
+Hence, 
+
+$$\mathcal{B}\{g_R(ar)\} = \frac{1}{a^2}G\left(\frac{\rho}{a}\right)$$
+
+- (d) :: Fourier-Bessel transform is basically Fourier transform of 2-D functions with circular symmetry. So, we can do the FT of given function in cartesian coordinate also.
+
+Given function is $g_R(r)=\exp\left(-\pi r^2\right)=\exp\left(-\pi(x^2+y^2\right)$.
+
+This is variable separable. So, we can take the Fourier transform of individuals. Then, we will get,
+\begin{equation*}
+\begin{split}
+\mathcal{F}\{\exp\left(-\pi(x^2+y^2)\right) = \mathcal{F}\{\exp(-\pi x^2)\}\mathcal{F}\{\exp(-\pi y^2)\} \\
+= & \exp(-\pi f_X^2)\exp(-\pi f_Y^2) \\
+= & \exp\left(-\pi(f_X^2+f_Y^2)\right)
+\end{split}
+\end{equation*}
+
+But, $f_X^2+f_Y^2=\rho^2$
+
+\therefore,
+
+$$\mathcal{B}\{\exp(-\pi r^2)\} = \exp(-\pi \rho^2) $$
+
+#+LATEX: \newpage
+* Problem 3
+\begin{equation}
+W(f,x) = \int_{-\infty}^{\infty} g(x+\frac{\xi}{2})g^*(x-\frac{\xi}{2})\exp(-j2\pi f\xi) d\xi
+\end{equation}
+- (a) ::  $g(x) = \exp(j\pi \beta x^2)$
+
+\begin{equation*}
+\begin{split}
+W(f,x) = & \int_{-\infty}^{\infty} \exp\left[j\pi\beta \left(x+\frac{\xi}{2}\right)^2\right]\exp\left[-j\pi\beta \left(x-\frac{\xi}{2}\right)^2\right]\exp(-j2\pi f\xi) d\xi \\
+= & \int_{-\infty}^{\infty} \exp\left[j\pi\beta \left[\left(x+\frac{\xi}{2}\right)^2 - \left(x-\frac{\xi}{2}\right)^2\right]\right]\exp(-j2\pi f\xi) d\xi \\
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+\left(x+\frac{\xi}{2}\right)^2 - \left(x-\frac{\xi}{2}\right)^2 = & x^2+x\xi + \frac{\xi^2}{4} - x^2+x\xi - \frac{\xi^2}{4} \\
+= & 2x\xi
+\end{split}
+\end{equation*}
+
+$\Rightarrow$
+
+\begin{equation*}
+\begin{split}
+W(f,x) = & \int_{-\infty}^{\infty} \exp\left[j\pi \beta \left[\left(x+\frac{\xi}{2}\right)^2 - \left(x-\frac{\xi}{2}\right)^2\right]\right]\exp(-j2\pi f\xi) d\xi \\
+ = & \int_{-\infty}^{\infty} \exp\left[j2\pi \beta x\xi\right]\exp(-j2\pi f\xi) d\xi \\
+ = & \int_{-\infty}^{\infty} \exp\left[j2\pi(\beta x-f)\xi\right] d\xi \\
+ = & \delta(f-\beta x)
+\end{split}
+\end{equation*}
+
+$\therefore$
+
+$$W(f,x) = \delta(f-\beta x) $$
+
+- (b) :: $g(x) = \exp(j\pi \beta x^2)\text{rect}\left(\frac{x}{2L}\right)$
+
+\begin{equation*}
+\begin{split}
+W(f,x) = & \int_{-\infty}^{\infty} \exp\left[j\pi\beta \left(x+\frac{\xi}{2}\right)^2\right]\exp\left[-j\pi\beta \left(x-\frac{\xi}{2}\right)^2\right]\text{rect}\left(\frac{x+\frac{\xi}{2}}{2L}\right)\text{rect}\left(\frac{x-\frac{\xi}{2}}{2L}\right)\exp(-j2\pi f\xi) d\xi \\
+ = & \int_{-\infty}^{\infty} \exp\left[j2\pi \beta x\xi\right]\text{rect}\left(\frac{x}{2L}+\frac{\xi}{4L}\right)\text{rect}\left(\frac{x}{2L}-\frac{\xi}{4L}\right)\exp(-j2\pi f\xi) d\xi \\
+\end{split}
+\end{equation*}
+
+By the definition of rectangular function,
+#+NAME: rect_fn
+\begin{equation}
+\Pi(x) = \begin{cases}
+0 ~ \text{if}~& |x|>\frac{1}{2} \\
+\frac{1}{2} ~ \text{if}~& |x|=\frac{1}{2} \\
+1 ~ \text{if}~& |x|<\frac{1}{2} \\
+\end{cases}
+\end{equation}
+
+# #+attr_latex: :align |c|c|c|c|c|
+# |-----------------+-------------------------------------------------+-------------------------------------------------+----------|
+# |           Value | \(\Pi\left(\frac{x}{2L}+\frac{\xi}{4L}\right)\) | \(\Pi\left(\frac{x}{2L}-\frac{\xi}{4L}\right)\) | Relation |
+# |-----------------+-------------------------------------------------+-------------------------------------------------+----------|
+# |               0 | \(\frac{x}{L}+\frac{\xi}{2L}\)                  | \(\frac{x}{L}-\frac{\xi}{2L}\)                  | \(>1\)   |
+# |-----------------+-------------------------------------------------+-------------------------------------------------+----------|
+# | \(\frac{1}{2}\) | \(\frac{x}{L}+\frac{\xi}{2L}\)                  | \(\frac{x}{L}-\frac{\xi}{2L}\)                  | \(=1\)   |
+# |-----------------+-------------------------------------------------+-------------------------------------------------+----------|
+# |               1 | \(\frac{x}{L}+\frac{\xi}{2L}\)                  | \(\frac{x}{L}-\frac{\xi}{2L}\)                  | \(<1\)   |
+# |-----------------+-------------------------------------------------+-------------------------------------------------+----------|
+# |               1 | \(\frac{x}{L}+\frac{\xi}{2L}\)                  | \(\frac{x}{L}-\frac{\xi}{2L}\)                  | \(>-1\)  |
+# |-----------------+-------------------------------------------------+-------------------------------------------------+----------|
+# | \(\frac{1}{2}\) | \(\frac{x}{L}+\frac{\xi}{2L}\)                  | \(\frac{x}{L}-\frac{\xi}{2L}\)                  | \(=-1\)  |
+# |-----------------+-------------------------------------------------+-------------------------------------------------+----------|
+# |               0 | \(\frac{x}{L}+\frac{\xi}{2L}\)                  | \(\frac{x}{L}-\frac{\xi}{2L}\)                  | \(<-1\)  |
+# |-----------------+-------------------------------------------------+-------------------------------------------------+----------|
+
+# #+attr_latex: :align |c|c|c|
+# |-------------------------------------------------+-------------------------------------------------+-----------------|
+# | \(\Pi\left(\frac{x}{2L}+\frac{\xi}{4L}\right)\) | \(\Pi\left(\frac{x}{2L}-\frac{\xi}{4L}\right)\) | Product of both |
+# |-------------------------------------------------+-------------------------------------------------+-----------------|
+# | \(>1,<-1\)                                      | \(>1,<1,>-1,<-1\)                               |               0 |
+# |-------------------------------------------------+-------------------------------------------------+-----------------|
+# | \(<1,>-1\)                                      | \(>1,<-1\)                                      |               0 |
+# |-------------------------------------------------+-------------------------------------------------+-----------------|
+# | \(<1,>-1\)                                      | \(<1,>-1\)                                      |               1 |
+# |-------------------------------------------------+-------------------------------------------------+-----------------|
+
+By analysing it, we will get
+
+\begin{equation}
+\text{rect}\left(\frac{x}{2L}+\frac{\xi}{4L}\right)\text{rect}\left(\frac{x}{2L}-\frac{\xi}{4L}\right) = \text{rect}\left(\frac{\xi}{4(L-|x|)}\right)
+\end{equation}
+
+
+Then, we will get,
+
+\begin{equation*}
+\begin{split}
+W(f,x) = & \int_{-\infty}^{\infty} \exp\left[j2\pi \beta x\xi\right]\text{rect}\left(\frac{x}{2L}+\frac{\xi}{4L}\right)\text{rect}\left(\frac{x}{2L}-\frac{\xi}{4L}\right)\exp(-j2\pi f\xi) d\xi \\
+= & \int_{-\infty}^{\infty} \exp\left[j2\pi (\beta x-f)\xi\right]\text{rect}\left(\frac{\xi}{4(L-|x|)}\right)d\xi \\
+= & [4(L-|x|)]\text{sinc}[4(L-|x|)(\beta x-f)]
+\end{split}
+\end{equation*}
+
+- (c) :: The plots are given in figures [[3d_plot_wxf]] and [[2d_plot_wx]].
+
+#+CAPTION: 3D plot of $W(f,x)= [4(L-|x|)]\text{sinc}[4(L-|x|)(\beta x-f)]$
+#+NAME: 3d_plot_wxf
+#+attr_latex: :width 17cm :placement [!htb]
+[[file:3D_plot.png]]
+
+#+CAPTION: 2D plot of $W(0,x)= [4(L-|x|)]\text{sinc}[4(L-|x|)(\beta x)]$
+#+NAME: 2d_plot_wx
+#+attr_latex: :width 17cm :placement [!htb]
+[[file:2D_plot.png]]
+#+LATEX: \newpage
+* Problem 4
+The grating is modeled as a transmitting structure with amplitude transmittance:
+$$t_{A}(\xi,\eta) = \frac{1}{2}\left[1+m\cos\left(2\pi\frac{\xi}{L}\right)\right]$$
+
+For more simplicity, we can assume that the grating structure is bounded by a square aperture of width $2w$. $m$ representa the peak-to-peak change of amplitude transmittance across the screen and $f_0=\frac{1}{L}$ is the spatial frequency of the grating. Using these, we can modify $t_A$.
+
+#+NAME: Grating
+\begin{equation}
+t_{A}(\xi,\eta) = \frac{1}{2}\left[1+m\cos\left(2\pi f_0\xi\right)\right]\text{rect}\left(\frac{\xi}{2w}\right)\text{rect}\left(\frac{\eta}{2w}\right)
+\end{equation}
+
+Let us say that the screen s normally illuminated by a unit-amplitude plane wave. The field distribution across the aperture is equal simply to $t_A$. To find the Fraunhofer diffraction pattern, we first take the transform of $t_A$.
+
+$$\mathcal{F}\left[\frac{1}{2}\left[1+m\cos\left(2\pi f_0\xi\right)\right]\right] = \frac{1}{2}\delta(f_X,f_Y) +\frac{m}{4}\delta(f_X+f_0,f_Y) + \frac{m}{4}\delta(f_X-f_0,f_Y) $$
+$$\mathcal{F}\left[\text{rect}\left(\frac{\xi}{2w}\right)\text{rect}\left(\frac{\eta}{2w}\right)\right] = A \text{sinc}(2wf_X)\text{sinc}(2wf_Y)$$
+
+$A$ is the area of the aperture bounding the grating. Using the convolution theorem, we can write that, The FT of $U(\xi,\eta)$ is the product of equations that we got above.
+
+#+NAME: tA_FT
+\begin{equation}
+\begin{split}
+\mathcal{F}\{U(\xi,\eta)\} = & A \text{sinc}(2wf_X)\text{sinc}(2wf_Y) \left[ \frac{1}{2}\delta(f_X,f_Y) +\frac{m}{4}\delta(f_X+f_0,f_Y) + \frac{m}{4}\delta(f_X-f_0,f_Y)\right] \\
+= & \frac{A}{2}\text{sinc}(2wf_Y)\left[\text{sinc}(2wf_X) +\frac{m}{2}\text{sinc}(2w(f_X+f_0)) + \frac{m}{2}\text{sinc}(2w(f_X-f_0))\right]
+\end{split}
+\end{equation}
+
+Now, using the formula of diffraction pattern,
+
+#+NAME: Diff_Pattern
+\begin{equation}
+U(x,y) = \frac{e^{jkz}e^{j\frac{k}{2z}(x^2+y^2)}}{j\lambda z} \mathcal{F}\{U(\xi,\eta)\}
+\end{equation}
+
+the amplitude distribution of our diffraction will be,
+
+#+NAME: Diff_Pattern_amplitude
+\begin{equation}
+U(x,y) = \frac{Ae^{jkz}e^{j\frac{k}{2z}(x^2+y^2)}}{2j\lambda z}\text{sinc}(2w\frac{y}{\lambda z})\left[\text{sinc}(2w\frac{x}{\lambda z}) +\frac{m}{2}\text{sinc}(\frac{2w}{\lambda z}(x+f_0\lambda z)) + \frac{m}{2}\text{sinc}(\frac{2w}{\lambda z}(x-f_0\lambda z))\right]
+\end{equation}
+
+The intensity distribution will be the square of [[Diff_Pattern_amplitude]].
+
+#+NAME: Diff_Pattern_amplitude
+\begin{equation}
+I(x,y) = \frac{A^2}{4\lambda^2 z^2}\text{sinc}^2(2w\frac{y}{\lambda z})\left[\text{sinc}(2w\frac{x}{\lambda z}) +\frac{m}{2}\text{sinc}(\frac{2w}{\lambda z}(x+f_0\lambda z)) + \frac{m}{2}\text{sinc}(\frac{2w}{\lambda z}(x-f_0\lambda z))\right]^2
+\end{equation}
+
+But if there are many grating periods within the aperture, then $f_0>>\frac{1}{w}$. So, the cross term of sinc functions will be negligible. Therefore,
+
+#+NAME: Diff_Pattern_amplitude_2
+\begin{equation}
+I(x,y) = \frac{A^2}{4\lambda^2 z^2}\text{sinc}^2(2w\frac{y}{\lambda z})\left[\text{sinc}^2(2w\frac{x}{\lambda z}) +\frac{m}{2}\text{sinc}^2(\frac{2w}{\lambda z}(x+f_0\lambda z)) + \frac{m}{2}\text{sinc}^2(\frac{2w}{\lambda z}(x-f_0\lambda z))\right]
+\end{equation}
+
+The width of each order will be $\frac{\lambda z}{w}$. For, $x=0$, it will be the central maximum. The one coming after that will be first order. 
+
+#+LATEX: \newpage
+* Problem 5
+We have the equation:
+#+NAME: negative_freq
+\begin{equation}
+u_-(P,t) = \int_{-\infty}^{0} U(P,\nu)\exp(j 2\pi \nu t)d \nu
+\end{equation}
+
+U(P,\nu) is the Fourier spectrum of $u(P,t)$.
+
+#+CAPTION: The surface
+#+NAME: Surface
+#+ATTR_LATEX: :width 4cm
+[[file:Pr_5_figure.png]]
+
+The figure is as showin in [[Surface]].
+
+
+We have the equation:
+
+#+NAME: P0P1
+\begin{equation}
+\begin{split}
+u_-(P_0,t) = \iint_{\Sigma} \frac{\cos(\vec{n},\vec{r}_{01})}{2\pi vr_{01}} \int_{-\infty}^{\infty} -j2\pi \nu' U(P_1,-\nu')\exp\left[-j2\pi\nu'\left(t-\frac{r_{01}}{v}\right)\right]d\nu' ds
+\end{split}
+\end{equation}
+
+Here, the central frequency is $\bar{\nu}$, and the bandwidth $\Delta{\nu}$. So, the integral in the frequency is non-vanishing only in the range $\left(\bar{\nu}-\frac{\Delta\nu}{2},\bar{\nu}+\frac{\Delta\nu}{2}\right)$. Given that $\Delta\nu << \bar{\nu}$. So, the first $\nu'$ will varie a small amount, since it is just linear in nature. We can replace that with $\bar{\nu}$. Also $\frac{1}{\Delta \nu} >> \frac{n r_{01}}{v}$. Then we can replace $\nu'$ in the exponential with the term $\frac{\nu'r_{01}}{v}$, by $\bar{nu}$. We don't know the $\nu'$ in other terms varie or that will make a huge difference in the result. Then, [[P0P1]] will be,
+
+
+\begin{equation*}
+\begin{split}
+u_-(P_0,t) = & \iint_{\Sigma} \frac{\cos(\vec{n},\vec{r}_{01})}{2\pi vr_{01}} \int_{-\infty}^{\infty} -j2\pi \bar{\nu} U(P_1,-\nu')\exp\left[-j2\pi\nu't\right]\exp\left[j2\pi\bar{\nu}\left(\frac{r_{01}}{v}\right)\right]d\nu' ds\\
+= &-j2\pi \bar{\nu} \iint_{\Sigma}\exp\left[j2\pi\bar{\nu}\left(\frac{r_{01}}{v}\right)\right] \frac{\cos(\vec{n},\vec{r}_{01})}{2\pi vr_{01}} \int_{-\infty}^{\infty}  U(P_1,-\nu')\exp\left[-j2\pi\nu't\right]d\nu' ds\\
+= &\frac{1}{\bar{j\lambda}} \iint_{\Sigma}\exp\left[j2\pi\bar{\nu}\left(\frac{r_{01}}{v}\right)\right] \frac{\cos(\vec{n},\vec{r}_{01})}{r_{01}} \int_{-\infty}^{\infty}  U(P_1,-\nu')\exp\left[-j2\pi\nu't\right]d\nu' ds\\
+= &\frac{1}{\bar{j\lambda}} \iint_{\Sigma}\exp\left[j2\pi\bar{\nu}\left(\frac{r_{01}}{v}\right)\right] \frac{\cos(\vec{n},\vec{r}_{01})}{r_{01}} u_-(P_1,t) ds~~~~~~~~~~\text{(Using equation 3-55 in Goodman)}.
+\end{split}
+\end{equation*}
+
+But, outside sigma, we can say that $u_-(P_1,t)$ will be zero. Then, we can make the integral upto infinity. So, we will get the equation,
+
+\begin{equation}
+v_-(P_0,t)= \frac{1}{\bar{j\lambda}} \iint_{-\infty}^\infty \exp\left(j\bar{k} r_{01}\right) \frac{\cos(\vec{n},\vec{r}_{01})}{r_{01}} u_-(P_1,t) ds
+\end{equation}
+
+#+LATEX: \newpage
+* Problem 6
+
+
+The periodic triangular wave is given by
+
+\begin{equation*}
+y = |x| ~~~(-\pi < x \leq \pi )
+\end{equation*}
+
+A single wave can be written in the form,
+
+#+NAME: signum_fn
+\begin{equation}
+y = \begin{cases}
+&x~ \text{if}~ 0\leq x<\pi \\
+&-x~ \text{if}~ -\pi\leq x<0 \\
+\end{cases}
+\end{equation}
+
+The period of wave is $2\pi$.
+
+We can write a periodic wave in the form,
+
+#+NAME: Fourier
+\begin{equation}
+g(t) = \sum_{n=-\infty}^{\infty} C_n e^{i 2\pi f_0 t} 
+\end{equation}
+
+Where $C_n$ is the Fourier coefficients and defined by the formula:
+
+#+NAME: Fourier_coeff
+\begin{equation}
+C_n=\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}} g(t) e^{-i 2\pi n f_0t} dt
+\end{equation}
+
+$f_0=\frac{1}{T}$
+
+Here, $T=2\pi$. $\therefore$
+
+\begin{equation*}
+\begin{split}
+C_n = & \frac{1}{2\pi} \left[\int_{-\pi}^0 (-x) e^{-i n x} dx + \int_{0}^{\pi} e^{-i nx} dx\right]\\
+= & \frac{-1+e^{-i \pi  n} (1+i \pi  n)}{n^2}+\frac{-1+e^{i \pi  n} (1-i \pi  n)}{n^2} \\
+= & \frac{-1+e^{-i \pi  n} (1+i \pi  n)-1+e^{i \pi  n} (1-i \pi  n)}{n^2}\\
+= & \frac{-2+e^{-i \pi n}+i \pi n e^{-i \pi  n}+e^{i \pi n}-i \pi n e^{i \pi n}}{n^2} \\
+= & \frac{-2+2\cos(n\pi)-2 \pi n \sin(n\pi)}{n^2} \\
+= & 2\frac{ (-1)^n-1}{n^2}
+\end{split}
+\end{equation*}
+
+Then, the Fourier transform of g(x) is,
+
+\begin{equation*}
+\begin{split}
+G(f) = & \mathcal{F}\{g(x)\} \\
+= & \sum_{n=-\infty}^{\infty}  2\frac{ (-1)^n-1}{n^2}\int_{-\infty}^{\infty} e^{i 2\pi (f-nf_0) x} dx   \\
+= & \sum_{n=-\infty}^{\infty}  2\frac{ (-1)^n-1}{n^2} \delta(f-nf_0)   \\
+\end{split}
+\end{equation*}
+
+So, the fourier transform of the given function can be written as:
+
+$$G(f) = \sum_{n=-\infty}^{\infty}  2\frac{ (-1)^n-1}{n^2} \delta\left(f-\frac{n}{2\pi}\right)  $$
+
+The signal and it's fourier transform is shown in figure [[Signal_n_FT_Triangular]].
+
+#+CAPTION: The signal and it's FT
+#+NAME: Signal_n_FT_Triangular
+[[file:Pr6_signal_FT.png]]
+
+#+LATEX: \newpage
+* Problem 7
+
+Given function is a periodic array of $\delta$-function which every fifth member is missing. The function as showin in figure  [[Freq_Spectrum]]
+
+This can be considered as a wave train of group of 4 dirac delta functions. So, one complete wave can be written as:
+
+#+NAME: Delta_array
+\begin{equation}
+\Delta(x) = \delta(x+3)+\delta(x+1)+\delta(x-1)+\delta(x-3)
+\end{equation}
+
+The given function is a convolution of $g(x)$ with the function
+
+#+NAME:  Delta_array_2
+\begin{equation}
+h(x) = \sum_{n=-\infty}^{\infty} \delta(x-5n)
+\end{equation}
+
+Now, let us write the given equation in the form of equation [[Fourier]]. Here, $T=10$.
+
+Then,
+
+\begin{equation*}
+\begin{split}
+C_n = & \frac{1}{10}\int_{-5}^{5} dx e^{-\frac{2\pi n x}{10}} \left[ \delta(x+3)+\delta(x+1)+\delta(x-1)+\delta(x-3)\right] \\
+= & \frac{1}{10} \left[e^{\frac{i6\pi n }{10}}+e^{\frac{-i6\pi n }{10}}+e^{\frac{i2\pi n }{10}}+e^{\frac{-i2\pi n }{10}}\right] \\
+= & \frac{1}{5}\left[\cos\left(\frac{2\pi n}{5}\right)+\cos\left(\frac{\pi n}{5}\right)\right] \\
+= & \frac{2}{5} \cos\left(\frac{3\pi n}{10}\right)\cos\left(\frac{\pi n}{10}\right)
+\end{split}
+\end{equation*}
+
+$\therefore$
+
+\begin{equation*}
+\begin{split}
+G(f) = & \mathcal{F}\{g(x)\} \\
+= & \sum_{n=-\infty}^{\infty}  \frac{2}{5} \cos\left(\frac{3\pi n}{10}\right)\cos\left(\frac{\pi n}{10}\right)\int_{-\infty}^{\infty} e^{i 2\pi (f-nf_0) x} dx   \\
+= & \sum_{n=-\infty}^{\infty}  \frac{2}{5} \cos\left(\frac{3\pi n}{10}\right)\cos\left(\frac{\pi n}{10}\right) \delta\left(f-\frac{n}{10}\right)
+\end{split}
+\end{equation*}
+
+So, the Fourier transform is:
+
+$$G(f) = \sum_{n=-\infty}^{\infty}  \frac{2}{5} \cos\left(\frac{3\pi n}{10}\right)\cos\left(\frac{\pi n}{10}\right) \delta\left(f-\frac{n}{10}\right)$$
+
+The plot of signal and it's transform is shown in figure [[Freq_Spectrum]].
+
+#+CAPTION: Signal and Frequency Spectrum
+#+NAME: Freq_Spectrum
+[[file:Pr7_Signal_Transform.png]]
+#+LATEX: \newpage
+* Problem 8
+
+#+CAPTION: The Chessboard
+#+NAME: chessboard
+#+ATTR_LATEX: :width 6cm
+[[file:Chess_Board.png]]
+
+The chess board looks as shown in figure [[chessboard]].This can be represented as a convolution of a 2d square function and an array of delta functions. Let us take the center as the origin. Side of one square can be taken as 2 unit. So, the array of dirac delta functions can be written as the following.
+
+\begin{equation*}
+\begin{split}
+\Delta(x,y) = & \left[ \delta(x-3) +\delta(x-7) +\delta(x+1) +\delta(x+5)\right]\left[\delta(y-1) +\delta(y-5) +\delta(y+3) +\delta(y+7)\right] \\
++ & \left[\delta(x-1) +\delta(x-5) +\delta(x+3) +\delta(x+7)\right]\left[ \delta(y-3) +\delta(y-7) +\delta(y+1) +\delta(y+5)\right]
+\end{split}
+\end{equation*}
+
+First, let us find the fourier transform of this.
+
+\begin{equation*}
+\begin{split}
+\mathcal{F} & \{\Delta(x,y)\} = \\
+ & \int_{-\infty}^{\infty} dx e^{-i2\pi f_Xx} \left[ \delta(x-3) +\delta(x-7) +\delta(x+1) +\delta(x+5)\right]\\ &\int_{-\infty}^{\infty} dy e^{-i2\pi f_Yy} \left[\delta(y-1) +\delta(y-5) +\delta(y+3) +\delta(y+7)\right] \\
++ & \int_{-\infty}^{\infty} dx e^{-i2\pi f_Xx}\left[\delta(x-1) +\delta(x-5) +\delta(x+3) +\delta(x+7)\right] \\ & \int_{-\infty}^{\infty} dy e^{-i2\pi f_Yy} \left[ \delta(y-3) +\delta(y-7) +\delta(y+1) +\delta(y+5)\right]\\
+= & \left[ \exp(-i6\pi f_X) +\exp(-i14\pi f_X) +\exp(i2\pi f_X) +\exp(i10\pi f_X)\right]\\ &\left[\exp(-i2\pi f_Y) +\exp(-i10\pi f_Y) +\exp(i6\pi f_Y) +\exp(i14\pi f_Y)\right] \\
++ &\left[\exp(-i2\pi f_X) +\exp(-i10\pi f_X) +\exp(i6\pi f_X) +\exp(i14\pi f_X)\right] \\ &  \left[ \exp(-i6\pi f_Y) +\exp(-i14\pi f_Y) +\exp(i2\pi f_Y) +\exp(i10\pi f_Y)\right]\\
+\end{split} 
+\end{equation*}
+
+Then, the Fourier transform of the array can be written as:
+
+#+NAME: dd_FT
+\begin{equation}
+\begin{split}
+\mathcal{F} & \{\Delta(x,y)\} =\left[ \exp(-i6\pi f_X) +\exp(-i14\pi f_X) +\exp(i2\pi f_X) +\exp(i10\pi f_X)\right]\\ &\left[\exp(-i2\pi f_Y) +\exp(-i10\pi f_Y) +\exp(i6\pi f_Y) +\exp(i14\pi f_Y)\right] \\
++ &\left[\exp(-i2\pi f_X) +\exp(-i10\pi f_X) +\exp(i6\pi f_X) +\exp(i14\pi f_X)\right] \\ &  \left[ \exp(-i6\pi f_Y) +\exp(-i14\pi f_Y) +\exp(i2\pi f_Y) +\exp(i10\pi f_Y)\right]\\
+\end{split}
+\end{equation}
+
+Here, we can define our rectangular function as,
+
+\begin{equation}
+rect(x) = \begin{cases} & 0~ \text{if}~ |x| > 1 \\
+& \frac{1}{2}~ \text{if}~ |x| = 1\\
+& 1~ \text{if}~ |x| < 1
+\end{cases}
+\end{equation}
+
+We can use the same definition for $y$ also. Then,
+
+#+NAME: rect_FTs
+\begin{equation}
+\begin{split}
+\mathcal{F}\{rect(x)\} = & \int_{-1}^1 dx e^{-i2\pi f_X x} \\
+= & \frac{e^{-2 f_X i \pi}-e^{2 f_X i \pi}}{-2 f_X i \pi} \\
+= & \frac{\sin (2\pi f_X)}{2\pi f_X} \\
+\mathcal{F}\{rect(y)\} = & \int_{-1}^1 dy e^{-i2\pi f_Y y} \\
+= & \frac{\sin (2\pi f_Y)}{2\pi f_Y}
+\end{split}
+\end{equation}
+
+Then,
+
+#+NAME: rect_FT_2d
+\begin{equation}
+\mathcal{F}\{rect(x,y)\} = \text{sinc}(2\pi f_X)\text{sinc}(2\pi f_Y)
+\end{equation}
+
+Since the chess board is the convolution of the defined array of dirac delta functions and a 2d rectangular function, using the Convolution theorem, the resultant Fourier transform will be the product of each. So, the resultant FT will be the product of [[dd_FT]] and [[rect_FT_2d]]. (Since the FT of dirac delta array is long, I am not copying it here).
+
+$\therefore$
+
+\begin{equation}
+\begin{split}
+G(f_X,f_Y) = \mathcal{F}\{\Delta(x,y)\} \times  \text{sinc}(2\pi f_X)\text{sinc}(2\pi f_Y)
+\end{split}
+\end{equation}
+
+** Another Method
+(This is more convincing for me)
+
+Rotate the axis by $\frac{\pi}{4}$ in counterclockwise direction. Then, we can write
+
+\begin{equation}
+\begin{split}
+X = & x-y \\
+Y = & x+y
+\end{split}
+\end{equation}
+
+We will get a $\frac{1}{\sqrt{2}}$ from the rotation matrix. But we have to scale the coordinate by a factor of $\sqrt{2}$, to combensate the length. Then we will get this set of equations.
+
+#+CAPTION: The Chessboard-Rotated
+#+NAME: chessboard_r
+#+ATTR_LATEX: :width 4cm :options angle=45
+[[file:Chess_Board.png]]
+
+From [[chessboard_r]], we can write the array of delta function.
+
+\begin{equation}
+\begin{split}
+\Delta(x,y) = & \left[\delta(X+1)+\delta(X+3)+\delta(X+5)+\delta(X+7)+\delta(X-1)+\delta(X-3)+\delta(X-5)+\delta(X-7)\right]\delta(Y) \\
+& +\left[\delta(X+1)+\delta(X+3)+\delta(X+5)+\delta(X-1)+\delta(X-3)+\delta(X-5)\right][\delta(Y-2)+\delta(Y+2)] \\
+& +\left[\delta(X+1)+\delta(X+3)+\delta(X-1)+\delta(X-3)+\right][\delta(Y-2)+\delta(Y+2)+\delta(Y-4)+\delta(Y+4)] \\ 
+& +\left[\delta(X+1)+\delta(X-1)+\right][\delta(Y-2)+\delta(Y+2)+\delta(Y-4)+\delta(Y+4)+\delta(Y-6)+\delta(Y+6)] \\ 
+\end{split}
+\end{equation}
+
+The Fourier Transform of this is,
+
+#+NAME: Delta_Transform
+\begin{equation}
+\begin{split}
+\mathcal{F}\{\Delta(x,y)\} = & 2\left[\cos 2\pi F_X+\cos 6\pi F_X+\cos 10\pi F_X+\cos 14\pi F_X\right] \\
+& + 4\left[\cos 2\pi F_X+\cos 6\pi F_X+\cos 10\pi F_X \right]\cos 4\pi F_Y \\
+& + 4\left[\cos 2\pi F_X+\cos 6\pi F_X \right]\left[\cos 4\pi F_Y+\cos 8\pi F_Y \right] \\
+& + 4\left[\cos 2\pi F_X\right]\left[\cos 4\pi F_Y+\cos 8\pi F_Y +\cos 12\pi F_Y\right]
+\end{split}
+\end{equation}
+
+We did a coordinate transformation to do this. So we need to do that in the Fourier space also. 
+
+\begin{equation}
+\begin{split}
+G(f_X,f_Y) = & \iint_{-\infty}^{\infty} dxdy f(x,y) e^{-2i\pi(f_Xx+f_Yy)} \\
+= & \frac{1}{4}\iint_{-\infty}^{\infty} dXdY f\left(\left(\frac{X+Y}{2}\right),\left(\frac{X-Y}{2}\right)\right) e^{-2i\pi\left(f_X\left(\frac{X+Y}{2}\right)+f_Y\left(\frac{X-Y}{2}\right)\right)}
+\end{split}
+\end{equation}
+
+From this, we can say that,
+
+#+NAME: fF_transform
+\begin{equation}
+\begin{split}
+F_X = & \frac{f_X+f_Y}{2}\\
+F_Y = & \frac{f_X-f_Y}{2}\\
+\end{split}
+\end{equation}
+
+Apply these to [[Delta_Transform]],
+
+\begin{equation}
+\begin{split}
+\mathcal{F}\{\Delta(x,y)\} = & 8\left[\cos \pi \left(f_X+f_Y\right)+\cos 3\pi \left(f_X+f_Y\right)+\cos 5\pi \left(f_X+f_Y\right)+\cos 7\pi \left(f_X+f_Y\right)\right] \\
+& + 16\left[\cos \pi \left(f_X+f_Y\right)+\cos 3\pi \left(f_X+f_Y\right)+\cos 5\pi \left(f_X+f_Y\right) \right]\cos 2\pi \left(f_X-f_Y\right) \\
+& + 16\left[\cos \pi \left(f_X+f_Y\right)+\cos 3\pi \left(f_X+f_Y\right) \right]\left[\cos 2\pi \left(f_X-f_Y\right)+\cos 4\pi \left(f_X-f_Y\right) \right] \\
+& + 16\left[\cos \pi \left(f_X+f_Y\right)\right]\left[\cos 2\pi \left(f_X-f_Y\right)+\cos 4\pi \left(f_X-f_Y\right) +\cos 6\pi \left(f_X-f_Y\right)\right]
+\end{split}
+\end{equation}
+
+For the squre, we can use the result [[rect_FT_2d]].
+
+The final solution will be product of both.
+
+\begin{equation}
+\mathcal{F}\{g(x,y)\} = \mathcal{F}\{\Delta(x,y)\} \times  \text{sinc}(2\pi f_X)\text{sinc}(2\pi f_Y)
+\end{equation}
+
+The plot of this is shown in figure [[pr_8_plot]].
+#+CAPTION: 3D plot of the Fourier Transform
+#+NAME: pr_8_plot
+#+attr_latex: :width 17cm :placement [t]
+[[file:3D_plot_pr8.png]]
+#+LATEX: \newpage
+* Problem 9
+
+The visibility \nu is defined as:
+#+NAME: visibility
+\begin{equation}
+\nu = \frac{I_{max}-I_{min}}{I_{max}+I_{min}}
+\end{equation}
+And the degree of coherence can be written as:
+
+#+NAME: degree_of_coherence
+\begin{equation}
+\gamma(\vec{r_1},\vec{r_2},\tau) = \frac{<f(t)f^*(t+\tau)>}{(I_1I_2)^{\frac{1}{2}}}
+\end{equation}
+
+where $\tau=t_2-t_1$, t_1 and t_2 are the time of arrival of beams from slit to the screen and I_1 = <f(r_1,t)f*(r_1,t)>
+
+For a double slit setup, the total intensity on the screen can be written as
+
+\begin{equation}
+\begin{split}
+I = & I_1+I_2+(<f_1(t)f_2^*(t+\tau)>)+(<f_1^*(t)f_2(t+\tau)>) \\
+= & I_1+I_2+2\mathcal{K}(<f_1(t)f_2^*(t+\tau)>)
+\end{split}
+\end{equation}
+
+$\mathcal{K}$ represents a phase factor between f_1 and f_2. In I_{max}, $\mathcal{K}$ is +1 and I_{min}, $\mathcal{K}$ is -1.
+
+$\therefore$
+
+$$I_{max} = I_1+I_2+2(<f_1(t)f_2^*(t+\tau)>)$$
+$$I_{min} = I_1+I_2-2(<f_1(t)f_2^*(t+\tau)>)$$
+
+Then, we can write [[visibility]] as:
+#+NAME: visibility_modified
+\begin{equation}
+\nu = \frac{2(<f_1(t)f_2^*(t+\tau)>)}{I_1+I_2}
+\end{equation}
+
+From [[degree_of_coherence]], we can now write,
+
+#+NAME: visibility_coherence
+\begin{equation}
+\nu = \frac{2(I_1I_2)^{\frac{1}{2}}|\gamma(\vec{r_1},\vec{r_2},\tau)|}{I_1+I_2}
+\end{equation}
+
+This is the equation that we get which connects degree of coherence and visibility of fringes while the intensity is different. If the intensities are same, $I_1=I_2$. Then, I_1+I_2=2I_1, I_1I_2=I_1^2.
+
+$\therefore$,
+
+$$\nu = |\gamma(\vec{r_1},\vec{r_2},\tau)|$$
+
+So, our result is consistant with the special case which is given in equestion.
+
+Ref: https://arxiv.org/pdf/1905.00917.pdf.
+$$\star\star\star$$

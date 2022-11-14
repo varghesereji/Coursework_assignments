@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import signal
+from scipy import integrate
+
+
+# def Function(x):
+#     x = x/np.pi
+#     return abs(x)
+
+dx = 0.0001
+X = np.arange(-10,10,dx)
+
+#f_x = Function(X)
+
+Sawtooth_wave = signal.sawtooth(X)
+Triangular_wave = np.pi*(1-np.abs(Sawtooth_wave))
+Square_wave = np.diff(Triangular_wave)/dx
+Comb_wave = np.diff(Square_wave)/dx
+fig,axs = plt.subplots(3,sharex=True)
+axs[0].set_title('Function')
+axs[0].plot(X,Triangular_wave)
+axs[1].set_title('First derivative')
+axs[1].plot(X[:-1],Square_wave)
+axs[2].set_title('Second derivative')
+axs[2].plot(X[:-2],Comb_wave)
+plt.savefig('Triangular_wave.png')

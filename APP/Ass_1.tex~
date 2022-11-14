@@ -1,0 +1,73 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\author{Varghese Reji}
+\date{}
+\title{\small{Astroparticle Physics}\\ \Large{Assignment-1 Answers}}
+\hypersetup{
+ pdfauthor={Varghese Reji},
+ pdftitle={\small{Astroparticle Physics}\\ \Large{Assignment-1 Answers}},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.2 (Org mode 9.5.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+\label{sec:org2968694}
+
+
+We know that electron and positron have same mass. While happening pair production, a photon will annihilated and an electron and positron will  get created. The threshold for this will be the energy corresponding to mass of electron and positron. Since mass of both are same, we just need to take twice the mass of electron.
+
+Mass of electron, \(m_e=0.511MeV\).
+
+So, the minimum threshold for pair production = \(2m_e=1.022MeV\).
+
+\section*{Problem 2}
+\label{sec:org8075157}
+
+The double differential charge current cross section for neutrino and antineutrino production on isoscalar nucleon targets is given by
+
+\begin{equation*}
+\frac{d^2 \sigma(\nu(\bar{\nu}) N)}{dx dQ^2} = \frac{G_F^2 M_W^4}{4\pi\left(Q^2+M_W^2\right)^2x}\sigma_r(\nu(\bar{\nu})N)
+\end{equation*}
+
+\begin{itemize}
+\item \(Q^2\): The invariant mass of the exchanged vector boson.
+\item \(x\): which is Bjorken x, the fraction of the momentum of the incoming nucleon taken by the struck quark.
+\item \(M_W\): Mass of nucleon.
+\item \(\sigma_r(\nu (\bar{\nu}) N)\) : Reduced cross sections.
+
+$$\sigma_r (\nu N) = \left[Y_+F_2^{\nu}(x,Q^2)-y^2F_L^{\nu}(x,Q^2)+Y_-xF_3^{\nu}(x,Q^2) \right]$$
+  $$\sigma_r(\bar{\nu} N) = \left[Y_+F_2^{\bar{\nu}}(x,Q^2) -y^2F_L^{\bar{\nu}}(x,Q^2) +Y_-xF_3^{\bar{\nu}}(x,Q^2)\right]$$
+
+\item \(F_2, ~xF_3,~F_L\): These are functions related to quark momentum distributions
+
+\item \(Y_{\pm} = 1\pm (1-y)^2\)
+
+\item \(y\): Measure of energy transfer between the lepton and hadron systems.
+\end{itemize}
+
+
+Most high energy physics experiments involve counting events and the rate at which the events are expected for an ideal measurement of a total cross-section \(\sigma\) is given by the product \(\mathcal{L}\times\sigma\) where \(\mathcal{L}\) is the beam flux, which is the number of beam particles per second per unit target artea, or luminosity. In more detail, the double differential cross-section for deep inelastic scattering is related to N(x,Q\textsuperscript{2}), the number of events measured in the bin of size \(\Delta x\Delta Q^2\) at \((x,Q^2)\), by
+
+$$\Delta x\Delta Q^2 \frac{d^2 \sigma(\nu(\bar{\nu}) N)}{dx dQ^2} = \frac{N(x,Q^2)}{<\mathcal{L}>A(x,Q^2)}$$
+
+\begin{itemize}
+\item \(\mathcal{L}\): Integrated luminosity
+\item \(A(x,Q^2\): correction functions that accounts for finite resolution, efficiencies and acceptance.
+\end{itemize}
+\end{document}

@@ -1,0 +1,16 @@
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+OPTIONS: tags:t tasks:t text:t timestamp:t toc:nil todo:t |:t
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+
+
+#+TITLE: Assignment-1
+#+AUTHOR: Varghese Reji
+
+* Problem 1
+
+
+We know that electron and positron have same mass. While happening pair production, a photon will annihilated and an electron and positron will  get created. The threshold for this will be the energy corresponding to mass of electron and positron. Since mass of both are same, we just need to take twice the mass of electron.
+
+Mass of electron, $m_e=0.511MeV$.
+
+So, the minimum threshold for pair production = $2m_e=1.022MeV$.

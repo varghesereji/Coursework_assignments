@@ -1,0 +1,39 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+L = 10
+beta = 1
+
+def Function(x,f):
+    return (2*L-np.absolute(x))*np.sinc((2*L-np.absolute(x))*(beta*x-f))
+
+#Making 3d plot
+
+f_vs = np.arange(-10,10,0.01)
+x_vs = np.arange(-10,10,0.01)
+
+X,F = np.meshgrid(x_vs,f_vs)
+
+W_f_x = Function(X,F)
+
+fig = plt.figure(figsize=(16,9))
+ax = plt.axes(projection='3d')
+ax.grid()
+ax.plot_surface(X,F,W_f_x)
+plt.xlabel('x')
+plt.ylabel('f')
+ax.set_title('3D plot of $W(x,f) = (2L-|x|)sinc((2L-|x|)({} x-f))$'.format(chr(946)))
+#plt.show(block=False)
+plt.savefig('3D_plot.png')
+
+x = np.arange(-1,1,0.001)
+
+W_0_x = Function(x,0)
+plt.figure(figsize=(16,9))
+plt.plot(x,W_0_x)
+plt.xlabel('x')
+plt.ylabel('W(0,x)')
+plt.title('2D plot of $W(x,0)$')
+#plt.show(block=False)
+plt.savefig('2D_plot.png')

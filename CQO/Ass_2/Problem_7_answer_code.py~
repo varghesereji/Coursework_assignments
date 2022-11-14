@@ -1,0 +1,36 @@
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+def real_en(a=1,omeg0=10, omega1=1, phi=0, n, t):
+    return a*np.cos((omega0+n*omega1)*t + n*phi)
+def img_en(a=1,omeg0=10, omega1=1, phi=0, n, t):
+    return a*np.sin((omega0+n*omega1)*t + n*phi)
+
+a=1
+omega0 = 10
+omega1 = 1
+time = np.arange(0,10,0.01)
+
+
+#Part 1
+Waves_re = None
+Waves_im = None
+for n in range(-5,6,1):
+    phi = np.random.uniform(0,2*np.pi,1)
+    real_e = real_en(a,omega0, omega1, phi, n, time)
+    img_e = img_en(a,omega0, omega1, phi, n, time)
+    if Waves_re is None:
+        Waves_re = real_e
+        Waves_im = img_e
+    else:
+        Waves_re = np.vstack((Waves_re,real_e))
+        Waves_im = np.vstack((Waves_im, img_e))
+
+Real_resultant = np.sum(Waves_re, axis=1)
+Imag_resultant = np.sum(Waves_im, axis=1)
+
+plt.figure()
+plt.plot(time, Real_resultant, label='Real part')
+plt.plot(time, Imag_resultant, label='Imaginary part')
+plt.savefig('pr_7_a.png')

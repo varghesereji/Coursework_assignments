@@ -1,0 +1,103 @@
+% Created 2022-11-14 Mon 21:25
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{lipsum}
+\author{Varghese Reji}
+\date{}
+\title{Classical and Quantum Optics\\\medskip
+\large Assignment-2 Answers}
+\hypersetup{
+ pdfauthor={Varghese Reji},
+ pdftitle={Classical and Quantum Optics},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+\label{sec:orgbf11b67}
+In the Einstein analysis we assume that the light radiation has a broad spectrum compared to the transition line. Let us now consider the contrary situation in which the spectral width of the light beam is much smaller than the linewidth of the transition. This is the kind of situation that occurs when a narrow-band laser beam interacts with as atom, inside a laser cavity or externally.
+\begin{description}
+\item[{(a)}] Explain why it is appropriate to write the spectral energy intensity of the beam as:
+$$u(\omega') = u_\omega\delta(\omega'-\omega)$$
+where \(\omega\) is the angular frequency of the beam, \(u_\omega\) is its energy density in \(Jm^{-3}\), and \(\delta(x)\) is the Dirac Delta function.
+\item[{(b)}] Let us assume that the frequency dependence of the absorption probability follows the spectral lineshape function g\textsubscript{\(\omega\)}(\(\omega\)). This implies that the Einstein \(B\) coefficients will also vary with frequency. Explain why it is appropriate to write the frequency dependence of the Einstein \(B_{12}\) coefficient as:
+$$B_{12} = \frac{g_2}{g_1} \frac{\pi^2c^3}{\hbar n^3\omega'^3} \frac{1}{\tau} g_{\omega}(\omega')$$
+\item[{(c)}] Hence show that the total absorption rate defined as
+$$W_{12} = N_1\int_{0}^{\infty} B_{12}(\omega') u(\omega')d\omega'$$
+is given by:
+$$W_{12} = N_1 \frac{g_2}{g_1} \frac{\pi^2c^3}{\hbar n^3\omega'^3} \frac{1}{\tau} u_{\omega}g_{\omega}(\omega')$$
+\item[{(d)}] Repeat the arguement to show that the total stimulated-emission rate is given by:
+$$W_{21} = N_2 \frac{\pi^2c^3}{\hbar n^3\omega'^3} \frac{1}{\tau} u_{\omega}g_{\omega}(\omega')$$
+\end{description}
+
+\section*{Problem 2}
+\label{sec:org03ac493}
+
+\newpage
+\section*{Problem 5}
+\label{sec:org326ff45}
+Estimate the Doppler and collision line widths of emission from \(H_2O\) molecules at \(\lambda = 0.5\mu m\), at 300K and atmospheric pressure. Assume the collision cross-section to be the same as the geometrical size of the molecule.
+
+\subsection*{Solution}
+\label{sec:orgf045246}
+Given, \(\lambda = 0.5\mu m\), T=300K.
+
+Let us consider the maximum possible geometrical area, which is in the plane perpendicular to \(z\) axis which pass through the oxygen atom. The angle between hydrogen atoms is \(104.45^o\), and length of one handle is \(l=95.84 pm\). \footnote{\url{https://en.wikipedia.org/wiki/Chemical\_bonding\_of\_water}}.And Atmospheric pressure is P=101325 Pa.
+
+From Kinetic theory of gasses, we will get
+
+\begin{equation}
+\label{eq:org262f645}
+\tau_{col} \sim \frac{1}{\sigma P} \left(\frac{\pi m k_B T}{8}\right)^{\frac{1}{2}}
+\end{equation}
+
+m = 2m\textsubscript{H} + m\textsubscript{O} = 17m\textsubscript{H};
+\(\sigma\) = \(\pi\) l\textsuperscript{2} \(\sin\)(104.45) = 2.70596603659\texttimes{} 10\textsuperscript{-20} m\textsuperscript{2} 
+
+\(\therefore\)
+$$\tau_{col} = 2.47784340277\times10^{-9}s$$
+
+Then, linewdith, $$\Delta\omega_{col} = 2.53574753762\times10^9 s= 2.526 GHz$$
+
+The linewidth by doppler broadening is given by the formula,
+
+\begin{equation}
+\label{eq:orgeb48c0e}
+\Delta\omega_{Doppler} = \frac{4\pi}{\lambda} \left(\frac{2 k_B T  \ln 2}{m}\right)^{\frac{1}{2}} 
+\end{equation}
+
+Then, we will get,
+
+$$\Delta\omega_{Doppler} = 1.13001722187\times 10^{10} = 11.30 GHz$$
+
+\section*{Problem 7}
+\label{sec:org4c1722a}
+Several output modes of a laser, indicated by the small integer m which lies between, say, +5 and –5, are represented by the waves 
+\begin{equation}
+E_n=a\exp\left[-i[(\omega_0+n\omega_1)t+\phi]\right]
+\end{equation}
+where \(\omega_1\) is the mode-spacing frequency. To illustrate mode-locking, calculate the wave resulting from superposition of these modes when (a) \(\phi_n\) is a random variable and (b) all \(\phi_n = 0\). (It is convenient to do this by computer.) 
+\section*{Solution}
+\label{sec:orgbc942bc}
+\end{document}

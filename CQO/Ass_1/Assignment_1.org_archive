@@ -1,0 +1,26 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/varghesereji/MEGAsync/Sem_5/CQO/Assignment_1.org
+
+
+* Problem 1
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2022-10-14 Fri 23:21
+  :ARCHIVE_FILE: ~/MEGAsync/Sem_5/CQO/Assignment_1.org
+  :ARCHIVE_CATEGORY: Assignment_1
+  :END:
+- (c) :: $$\mathcal{F}(\nabla^2g(x,y))=-4\pi^2(f_x^2+f_y^2)\mathcal{F}(g(x,y))$$ 
+
+We know that:
+
+#+Name: Greens_identity
+\begin{equation}
+\int_V\left(\psi\vec{\nabla}^2\phi+\vec{\nabla}\psi\cdot\vec{\nabla}\phi\right)dV=\oint_S\psi\vec{\nabla}\phi\cdot d\vec{S}
+\end{equation}
+
+Let us take $\psi = e^{-2\pi i\left(f_xx+f_yy\right)}$ and $\phi = g(x,y)$.
+
+But here, we can assume that value of $g$ is really small at large $x$ and $y$. So
+
+Equation [[Greens_identity]]
