@@ -128,8 +128,54 @@ The solution of this is done in python. You can see the code [[https://github.co
 
 #+LATEX: \newpage
 
+
 * Problem 8
-A material has six energy levels A to F at 2, 1.9, 1.7, 1.6, 1.1 and 0.4 eV above the ground state, G. The time constants for the various possible transitions in nanoseconds are shown in figure (Now adding here.) Suggest possible lasers working with this material, and give the pump and output wavelendths of each one.
+Calculate and plot the intensity profile across the diameter of a laser spot of the $TEM_{00}$ and $TEM_{10}$ modes emanating from a resonator with circular symmetry. Next, do the same for a resonator with rectangular symmetry. Here, plot along the X axis. You may assume any numerical values of geometric parameter for the resonators if needed.
+
+** Solution
+
+For cylindrical cavity, the beam is Laguerre-Gaussian beam. It is given by the equation, (There is angle dependence actually. But we are looking only on intensity. Then, terms with angle will go. So, I am not adding it here. Also, take $w=1$)
+
+$$\mathcal{E}_{mn}^L(r) = r^n L_{mn}(2r^2)\exp(-r^2)$$ [fn:3]
+
+where,
+
+$$L_{mn}(r) = \frac{e^r r^{-n}}{m!}\frac{d^m}{dr^m}\left(e^{-r} r^{n+m}\right)$$
+
+For m=0, n=0, L_{mn}(r)=1 Then, the plot is simply gaussian.
+
+$$\mathcal{E}_{00} = e^{-r^2}$$
+
+For m=1, n=0,
+
+$$L_{10} =  \left( 1-r \right)$$ [fn:2]
+
+
+ 
+Then,
+
+$$\mathcal{E}_{10} = \left( 1-r  \right) e^{-r^2}$$
+
+
+The amplitude for a particular mode in rectangular cavity is given by
+$$\mathcal{E}_{mn}(x,y) = \mathcal{E}_0H_m\left(\frac{\sqrt{2} x}{w}\right)H_n\left(\frac{\sqrt{2} y}{w}\right)e^{-\frac{x^2+y^2}{w^2}}$$
+
+$H_m$ and $H_n$ are Hermite polynomials.
+
+For simplicity, take $\mathcal{E}_0 = 1, w=1$. Then,
+
+$$\mathcal{E}_{mn}(x,y) = H_m\left(\sqrt{2} x\right)H_n\left(\sqrt{2} y\right)e^{-(x^2+y^2)}$$
+
+$$\mathcal{E}_{00}(x,y) = e^{-(x^2+y^2)}$$
+$$\mathcal{E}_{10}(x,y) = 2x e^{-(x^2+y^2)}$$
+The figure had been shown below.
+
+[[file:laser_intensity.png]]
+
+
+
+* Problem 9
+A material has six energy levels A to F at 2, 1.9, 1.7, 1.6, 1.1 and 0.4 eV above the ground state, G. The time constants for the various possible transitions in nanoseconds are shown in figure (Not adding here.) Suggest possible lasers working with this material, and give the pump and output wavelendths of each one.
 ** Solution
 
 For a laser, we have to satisfy condition to happen the lasing.
@@ -219,5 +265,8 @@ The output wavelength should be larger than pump wavelength. So, we will filter 
 #+TBLFM: $5=10::$6=10^4::
 
 * Footnotes
+[fn:3] Ref: [[https://laser.physics.sunysb.edu/_alex/tmodes/webreport.html]] 
+
+[fn:2] Ref: Griffiths, Quantum Mechanics. 
 
 [fn:1] https://en.wikipedia.org/wiki/Chemical_bonding_of_water 

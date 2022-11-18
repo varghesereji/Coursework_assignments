@@ -1,0 +1,22 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def H0(u):
+    return 1
+
+
+def H1(u):
+    return u
+
+
+def gaussian(u):
+    return np.exp(-u**2)
+
+
+x = np.arange(-2, 2, 0.01)
+gauss = gaussian(x)
+
+plt.figure()
+plt.plot(x, (gauss * H1(x))**2)
+plt.savefig('figure_1.png')

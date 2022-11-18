@@ -1,4 +1,4 @@
-% Created 2022-11-17 Thu 17:17
+% Created 2022-11-18 Fri 18:31
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -33,7 +33,7 @@
 \maketitle
 
 \section*{Problem 1}
-\label{sec:org0303043}
+\label{sec:orgf7390ea}
 In the Einstein analysis we assume that the light radiation has a broad spectrum compared to the transition line. Let us now consider the contrary situation in which the spectral width of the light beam is much smaller than the linewidth of the transition. This is the kind of situation that occurs when a narrow-band laser beam interacts with as atom, inside a laser cavity or externally.
 \begin{description}
 \item[{(a)}] Explain why it is appropriate to write the spectral energy intensity of the beam as:
@@ -50,14 +50,14 @@ $$W_{21} = N_2 \frac{\pi^2c^3}{\hbar n^3\omega'^3} \frac{1}{\tau} u_{\omega}g_{\
 \end{description}
 
 \section*{Problem 2}
-\label{sec:orgfc0a9ca}
+\label{sec:org3cdf176}
 
 \newpage
 \section*{Problem 3}
-\label{sec:org759b8e9}
+\label{sec:orgff7a50e}
 Calculate the fraction of energy of a 00-mode laser beam with beam radius \(w\) within a distance \(w\) from the beam centre.
 \subsection*{Solution}
-\label{sec:org5bbf05d}
+\label{sec:orgcaeec16}
 The electric field at a distance for 00-mode is given by
 
 $$\mathcal{E}=\mathcal{E}_0\exp\left(-\frac{r^2}{w^2}\right)$$
@@ -75,11 +75,11 @@ So, the fraction of energy in distance \(w\)
 $$\frac{E(w)}{E(\infty)} = 1-e^{-2}=0.864 = 86.4\%$$
 
 \section*{Problem 5}
-\label{sec:org07d70a8}
+\label{sec:orgd36f579}
 Estimate the Doppler and collision line widths of emission from \(H_2O\) molecules at \(\lambda = 0.5\mu m\), at 300K and atmospheric pressure. Assume the collision cross-section to be the same as the geometrical size of the molecule.
 
 \subsection*{Solution}
-\label{sec:org7551358}
+\label{sec:org0ea82e9}
 Given, \(\lambda = 0.5\mu m\), T=300K.
 
 Let us consider the maximum possible geometrical area, which is in the plane perpendicular to \(z\) axis which pass through the oxygen atom. The angle between hydrogen atoms is \(104.45^o\), and length of one handle is \(l=95.84 pm\). \footnote{\url{https://en.wikipedia.org/wiki/Chemical\_bonding\_of\_water}}.And Atmospheric pressure is P=101325 Pa.
@@ -87,7 +87,7 @@ Let us consider the maximum possible geometrical area, which is in the plane per
 From Kinetic theory of gasses, we will get
 
 \begin{equation}
-\label{eq:org609bada}
+\label{eq:orgef8b558}
 \tau_{col} \sim \frac{1}{\sigma P} \left(\frac{\pi m k_B T}{8}\right)^{\frac{1}{2}}
 \end{equation}
 
@@ -102,7 +102,7 @@ Then, linewdith, $$\Delta\omega_{col} = 2.53574753762\times10^9 s= 2.526 GHz$$
 The linewidth by doppler broadening is given by the formula,
 
 \begin{equation}
-\label{eq:orgb4f6f79}
+\label{eq:orgc9ffa57}
 \Delta\omega_{Doppler} = \frac{4\pi}{\lambda} \left(\frac{2 k_B T  \ln 2}{m}\right)^{\frac{1}{2}} 
 \end{equation}
 
@@ -112,10 +112,10 @@ $$\Delta\omega_{Doppler} = 1.13001722187\times 10^{10} = 11.30 GHz$$
 
 \newpage
 \section*{Problem 6}
-\label{sec:orgfdf335e}
+\label{sec:org8d461d1}
 Monochromatic light is scattered at \(90^o\) from a cell containing \(10^{-16}\) g particles in suspension at 300K. Estimate the coherence time and linewidth of the scattered light.
 \subsection*{Solution}
-\label{sec:org4439522}
+\label{sec:org4a98bc7}
 
 The wavelength is not specified. So, assume that \(\lambda = 500nm\). T=300K
 We can consider the scattering in this case like reflection from a moving mirror. The particles in this is in thermal motion. So, using kinetic theory, the kinetic energy of each particle in each direction is \(\frac{1}{2}k_BT\).
@@ -144,14 +144,14 @@ $$\tau_c = 1.667\times 10^{-15} = 1.667 fs $$
 
 \newpage
 \section*{Problem 7}
-\label{sec:orgc8bb4f5}
+\label{sec:orgd794b30}
 Several output modes of a laser, indicated by the small integer m which lies between, say, +5 and –5, are represented by the waves 
 \begin{equation}
 E_n=a\exp\left[-i[(\omega_0+n\omega_1)t+\phi_n]\right]
 \end{equation}
 where \(\omega_1\) is the mode-spacing frequency. To illustrate mode-locking, calculate the wave resulting from superposition of these modes when (a) \(\phi_n\) is a random variable and (b) all \(\phi_n = 0\). (It is convenient to do this by computer.) 
 \subsection*{Solution}
-\label{sec:org7741e73}
+\label{sec:org18ffe39}
 The solution of this is done in python. You can see the code \href{https://github.com/varghesereji/Coursework\_assignments/blob/main/CQO/Ass\_2/Problem\_7\_answer\_code.py}{here.}
 \begin{description}
 \item[{(a)}] In this case, values of \(\phi\) is random.  The mode-locked pulses will be as shown in the figure below.
@@ -168,11 +168,61 @@ The solution of this is done in python. You can see the code \href{https://githu
 
 \newpage
 
+
 \section*{Problem 8}
-\label{sec:org0e387b5}
-A material has six energy levels A to F at 2, 1.9, 1.7, 1.6, 1.1 and 0.4 eV above the ground state, G. The time constants for the various possible transitions in nanoseconds are shown in figure (Now adding here.) Suggest possible lasers working with this material, and give the pump and output wavelendths of each one.
+\label{sec:orgeb30244}
+Calculate and plot the intensity profile across the diameter of a laser spot of the \(TEM_{00}\) and \(TEM_{10}\) modes emanating from a resonator with circular symmetry. Next, do the same for a resonator with rectangular symmetry. Here, plot along the X axis. You may assume any numerical values of geometric parameter for the resonators if needed.
+
 \subsection*{Solution}
-\label{sec:org515a892}
+\label{sec:orgaa6e207}
+
+For cylindrical cavity, the beam is Laguerre-Gaussian beam. It is given by the equation, (There is angle dependence actually. But we are looking only on intensity. Then, terms with angle will go. So, I am not adding it here. Also, take \(w=1\))
+
+$$\mathcal{E}_{mn}^L(r) = r^n L_{mn}(2r^2)\exp(-r^2)$$ \footnote{Ref: \url{https://laser.physics.sunysb.edu/\_alex/tmodes/webreport.html}}
+
+where,
+
+$$L_{mn}(r) = \frac{e^r r^{-n}}{m!}\frac{d^m}{dr^m}\left(e^{-r} r^{n+m}\right)$$
+
+For m=0, n=0, L\textsubscript{mn}(r)=1 Then, the plot is simply gaussian.
+
+$$\mathcal{E}_{00} = e^{-r^2}$$
+
+For m=1, n=0,
+
+$$L_{10} =  \left( 1-r \right)$$ \footnote{Ref: Griffiths, Quantum Mechanics.}
+
+
+
+Then,
+
+$$\mathcal{E}_{10} = \left( 1-r  \right) e^{-r^2}$$
+
+
+The amplitude for a particular mode in rectangular cavity is given by
+$$\mathcal{E}_{mn}(x,y) = \mathcal{E}_0H_m\left(\frac{\sqrt{2} x}{w}\right)H_n\left(\frac{\sqrt{2} y}{w}\right)e^{-\frac{x^2+y^2}{w^2}}$$
+
+\(H_m\) and \(H_n\) are Hermite polynomials.
+
+For simplicity, take \(\mathcal{E}_0 = 1, w=1\). Then,
+
+$$\mathcal{E}_{mn}(x,y) = H_m\left(\sqrt{2} x\right)H_n\left(\sqrt{2} y\right)e^{-(x^2+y^2)}$$
+
+$$\mathcal{E}_{00}(x,y) = e^{-(x^2+y^2)}$$
+$$\mathcal{E}_{10}(x,y) = 2x e^{-(x^2+y^2)}$$
+The figure had been shown below.
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{laser_intensity.png}
+\end{center}
+
+
+
+\section*{Problem 9}
+\label{sec:org78f6974}
+A material has six energy levels A to F at 2, 1.9, 1.7, 1.6, 1.1 and 0.4 eV above the ground state, G. The time constants for the various possible transitions in nanoseconds are shown in figure (Not adding here.) Suggest possible lasers working with this material, and give the pump and output wavelendths of each one.
+\subsection*{Solution}
+\label{sec:orgbde81c1}
 
 For a laser, we have to satisfy condition to happen the lasing.
 \begin{description}
@@ -183,7 +233,7 @@ For a laser, we have to satisfy condition to happen the lasing.
 \end{description}
 
 \subsubsection*{Energy levels}
-\label{sec:org30509e7}
+\label{sec:org05acb91}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
@@ -195,7 +245,7 @@ Energy from G(eV) & 2 & 1.9 & 1.7 & 1.6 & 1.1 & 0.4 & 0\\
 \end{center}
 
 \subsubsection*{Time constants between different levels in nanoseconds.}
-\label{sec:orga27d2ff}
+\label{sec:org6a42781}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -219,7 +269,7 @@ G & 10 & 10 & 0 & 0 & 10\textsuperscript{4} & 10\\
 The lasing will happen when the time constants are sufficiently high. So, we need to look only for such cases from the above table. This condition had been satisfied in 5 cases with time constant \(10^{5} ns\). Those are,  C\(\rightarrow\) D, B\(\rightarrow\) E, C\(\rightarrow\) E, C\(\Rightarrow\) F and E\(\rightarrow\) G.
 
 \subsubsection*{Levels for lasing}
-\label{sec:org2525d2b}
+\label{sec:org7c8f010}
 
 \begin{center}
 \begin{tabular}{llrrrrl}
@@ -240,7 +290,7 @@ E & G & 1.1 & 0 & 1.1 & 1.1294318 & 3L\\
 To reach this higher metastable state, pumping level should be larger than that. Now, let us look on the required pumping levels and pumping energy. The time constant for this should be low.
 
 \subsubsection*{Pumping wavelengths}
-\label{sec:org8a901c5}
+\label{sec:orgf5047d4}
 \begin{center}
 \begin{tabular}{lllrrrrl}
 \hline
@@ -259,7 +309,10 @@ E & E & F & 1.1 & 0.4 & 0.7 & 1.7748214 & 3L\\
 \end{center}
 
 \subsubsection*{Possible Lasing Actions}
-\label{sec:org991b4e5}
+\label{sec:orgb775e12}
+
+The output wavelength should be larger than pump wavelength. So, we will filter out other cases.
+
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
@@ -274,9 +327,6 @@ G & B & C & F & 10 & 10000 & 0.95567308 & 0.65388158 & 4L\\
 G & A & C & E & 10 & 10000 & 2.070625 & 0.6211875 & 4L\\
 G & B & C & E & 10 & 10000 & 2.070625 & 0.65388158 & 4L\\
 G & B & B & E & 10 & 10000 & 1.5529688 & 0.65388158 & 3L\\
-C & B & B & E & 50 & 10000 & 1.5529688 & 6.211875 & 3L\\
-D & B & B & E & 50 & 10000 & 1.5529688 & 6.211875 & 3L\\
-F & E & E & G & 100 & 10000 & 1.1294318 & 1.7748214 & 3L\\
 \hline
 \end{tabular}
 \end{center}
