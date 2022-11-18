@@ -62,6 +62,13 @@ Then, we will get,
 
 $$\Delta\omega_{Doppler} = 1.13001722187\times 10^{10} = 11.30 GHz$$
 
+* Problem 7
+ Several output modes of a laser, indicated by the small integer m which lies between, say, +5 and –5, are represented by the waves 
+\begin{equation}
+E_n=a\exp\left[-i[(\omega_0+n\omega_1)t+\phi_n]\right]
+\end{equation}
+where $\omega_1$ is the mode-spacing frequency. To illustrate mode-locking, calculate the wave resulting from superposition of these modes when (a) $\phi_n$ is a random variable and (b) all $\phi_n = 0$. (It is convenient to do this by computer.) 
+* Solution
 * Footnotes
 
 [fn:1] https://en.wikipedia.org/wiki/Chemical_bonding_of_water 

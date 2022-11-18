@@ -1,0 +1,25 @@
+# This code is to get the correlation between two comb functions
+# Which is randomly distributed
+
+import numpy as np
+from scipy import signal
+import random
+
+def dirac_deltas(N, n):
+    '''
+    Parameters
+    -----------------------------
+    N: Number of elements in the array
+    n: Position of dirac delta function in the array
+    '''
+    Signal = signal.unit_impulse(N, n)
+    return Signal
+
+def full_dirac_delta(N):
+    '''
+    Parameters
+    -------------------------------------
+    N: Number of elements
+    '''
+    random_position = random.randint(0, N)
+    

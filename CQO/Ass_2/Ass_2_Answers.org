@@ -28,9 +28,29 @@ In the Einstein analysis we assume that the light radiation has a broad spectrum
 * Problem 2
 
 #+LATEX: \newpage
+* Problem 3
+Calculate the fraction of energy of a 00-mode laser beam with beam radius $w$ within a distance $w$ from the beam centre.
+** Solution
+The electric field at a distance for 00-mode is given by
+
+$$\mathcal{E}=\mathcal{E}_0\exp\left(-\frac{r^2}{w^2}\right)$$
+
+Energy density of an electric field is given by, $u=\frac{1}{2}\epsilon_0\mathcal{E}^2$. 
+
+Then, total energy in a particular distance $r$ is given by,
+
+$$E(r) = \int_V udV = \pi \epsilon_0 \mathcal{E_0}^2\int_0^r e^{-\frac{2r'^2}{w^2}} r'dr' $$ 
+# [calc-mode: language: latex]
+
+$$=\pi\epsilon_0\frac{w^2\left(1-\exp\left( \frac{-2 r^2}{w^2}\right)\right)}{4}$$
+
+So, the fraction of energy in distance $w$
+
+$$\frac{E(w)}{E(\infty)} = 1-e^{-2}=0.864 = 86.4\%$$
+
 * Problem 5
 Estimate the Doppler and collision line widths of emission from $H_2O$ molecules at $\lambda = 0.5\mu m$, at 300K and atmospheric pressure. Assume the collision cross-section to be the same as the geometrical size of the molecule.
-
+ 
 ** Solution
 Given, $\lambda = 0.5\mu m$, T=300K.
 
@@ -62,13 +82,142 @@ Then, we will get,
 
 $$\Delta\omega_{Doppler} = 1.13001722187\times 10^{10} = 11.30 GHz$$
 
+#+LATEX: \newpage
+* Problem 6
+Monochromatic light is scattered at $90^o$ from a cell containing $10^{-16}$ g particles in suspension at 300K. Estimate the coherence time and linewidth of the scattered light.
+** Solution
+
+The wavelength is not specified. So, assume that $\lambda = 500nm$. T=300K
+We can consider the scattering in this case like reflection from a moving mirror. The particles in this is in thermal motion. So, using kinetic theory, the kinetic energy of each particle in each direction is $\frac{1}{2}k_BT$.
+
+Here, the scattering is in $90^o$. So, we can consider the line of sight along the path of reflected ray. We need to consider the motion of particle in that direction only. Let us take that direction as $x$. Then, we can write,
+
+$$\frac{1}{2} m v_x^2 = \frac{1}{2} k_B T$$.
+
+Then, $$v_x = \sqrt{\frac{k_BT}{m}} = 2.034\times 10^{-1} m/s = 20.34cm/s$$
+
+The Doppler shift can be written as
+
+$$\frac{\delta\lambda}{\lambda} = \frac{v_x}{c} = 6.782\times10^{-10}$$
+
+Then, 
+
+$$\delta\lambda = \frac{v_x\lambda}{c} = 3.3911\times 10^{-16} m = 3.391\times 10^{-7}nm $$
+
+The coherence time is given by the formula
+
+$$\tau_c = \frac{\lambda^2}{c\delta \lambda} = \frac{\lambda}{v_x}$$
+
+Then,
+
+$$\tau_c = 1.667\times 10^{-15} = 1.667 fs $$
+
+#+LATEX: \newpage
 * Problem 7
  Several output modes of a laser, indicated by the small integer m which lies between, say, +5 and –5, are represented by the waves 
 \begin{equation}
 E_n=a\exp\left[-i[(\omega_0+n\omega_1)t+\phi_n]\right]
 \end{equation}
 where $\omega_1$ is the mode-spacing frequency. To illustrate mode-locking, calculate the wave resulting from superposition of these modes when (a) $\phi_n$ is a random variable and (b) all $\phi_n = 0$. (It is convenient to do this by computer.) 
-* Solution
+** Solution
+The solution of this is done in python. You can see the code [[https://github.com/varghesereji/Coursework_assignments/blob/main/CQO/Ass_2/Problem_7_answer_code.py][here.]]
+- (a) :: In this case, values of $\phi$ is random.  The mode-locked pulses will be as shown in the figure below.
+[[file:pr_7_a.png]]
+- (b) :: Here, $\phi$ is 0. The pulses is shown in the figure below.
+[[file:pr_7_b.png]]
+
+#+LATEX: \newpage
+
+* Problem 8
+A material has six energy levels A to F at 2, 1.9, 1.7, 1.6, 1.1 and 0.4 eV above the ground state, G. The time constants for the various possible transitions in nanoseconds are shown in figure (Now adding here.) Suggest possible lasers working with this material, and give the pump and output wavelendths of each one.
+** Solution
+
+For a laser, we have to satisfy condition to happen the lasing.
+- (a) :: The lowest level is the ground state
+- (b) :: Uppermose state must be connected to the ground state by a short time constant if optical pumping is to be used.
+- (c) :: One pair of levels, which will be lasing levels must be connected weakly, i.e. the time constant for transitions between them must be long compared to the others involved
+- (d) :: The upper laser level must not have a faster competing transition to another level, excluting the ground state of optical pumping is used.
+
+*** Energy levels
+#+attr_latex: :align |c|c|c|c|c|c|c|c|
+  |--------------------+---+-----+-----+-----+-----+-----+---|
+  | Level              | A |   B |   C |   D |   E |   F | G |
+  |--------------------+---+-----+-----+-----+-----+-----+---|
+  | Energy from G(eV)  | 2 | 1.9 | 1.7 | 1.6 | 1.1 | 0.4 | 0 |
+  |--------------------+---+-----+-----+-----+-----+-----+---|
+
+*** Time constants between different levels in nanoseconds.
+#+attr_latex: :align |c|c|c|c|c|c|c|
+|---+----+------+------+------+------+------|
+| B |  0 |    - |   50 |   50 | 10^4 |    0 |
+|---+----+------+------+------+------+------|
+| C | 10 |   50 |    - | 10^4 | 10^4 |    0 |
+|---+----+------+------+------+------+------|
+| D |  0 |   50 | 10^4 |    - |    0 | 10^4 |
+|---+----+------+------+------+------+------|
+| E |  0 | 10^4 | 10^4 |    0 |    - |  100 |
+|---+----+------+------+------+------+------|
+| F |  0 |    0 |    0 | 10^4 |  100 |    - |
+|---+----+------+------+------+------+------|
+| G | 10 |   10 |    0 |    0 | 10^4 |   10 |
+|---+----+------+------+------+------+------|
+|   |  A |    B |    C |    D |    E |    F |
+|---+----+------+------+------+------+------|
+
+The lasing will happen when the time constants are sufficiently high. So, we need to look only for such cases from the above table. This condition had been satisfied in 5 cases with time constant $10^{5} ns$. Those are,  C\rightarrow D, B\rightarrow E, C\rightarrow E, C\Rightarrow F and E\rightarrow G.
+
+*** Levels for lasing
+
+|--------+-------+------+------+-----------+------------+---------|
+| Higher | Lower | Em_2 | Em_1 | Em_2-Em_1 |    \lambda | Comment |
+|        |       | (eV) | (eV) |      (eV) |    (\mu m) |         |
+|--------+-------+------+------+-----------+------------+---------|
+| C      | D     |  1.7 |  1.6 |       0.1 |   12.42375 | 4L      |
+| C      | F     |  1.7 |  0.4 |       1.3 | 0.95567308 | 4L      |
+| C      | E     |  1.7 |  1.1 |       0.6 |   2.070625 | 4L      |
+| B      | E     |  1.9 |  1.1 |       0.8 |  1.5529688 | 3L      |
+| E      | G     |  1.1 |    0 |       1.1 |  1.1294318 | 3L      |
+|--------+-------+------+------+-----------+------------+---------|
+#+TBLFM: $5=$3-$4::$6=1.242375/$5
+
+
+To reach this higher metastable state, pumping level should be larger than that. Now, let us look on the required pumping levels and pumping energy. The time constant for this should be low.
+
+*** Pumping wavelengths
+|------------+---------+---------+------+------+---------+------------+---------|
+| Upper      | Higher  | Lower   |  E_2 |  E_1 | E_2-E_1 |    \lambda | Comment |
+| Metastable | Pumping | Pumping | (eV) | (eV) |    (eV) |   (micron) |         |
+| State      | level   | level   |      |      |         |            |         |
+|------------+---------+---------+------+------+---------+------------+---------|
+| C          | A       | G       |    2 |    0 |       2 |  0.6211875 | 4L      |
+| C          | B       | G       |  1.9 |    0 |     1.9 | 0.65388158 | 4L      |
+| B          | B       | G       |  1.9 |    0 |     1.9 | 0.65388158 | 3L      |
+| B          | B       | C       |  1.9 |  1.7 |     0.2 |   6.211875 | 3L      |
+| B          | B       | D       |  1.9 |  1.6 |     0.3 |   6.211875 | 3L      |
+| E          | E       | F       |  1.1 |  0.4 |     0.7 |  1.7748214 | 3L      |
+|------------+---------+---------+------+------+---------+------------+---------|
+#+TBLFM: $6=$4-$5::$7=1.242375/$6
+
+*** Possible Lasing Actions
+
+The output wavelength should be larger than pump wavelength. So, we will filter out other cases.
+
+#+attr_latex: :align |c|c|c|c|c|c|c|c|c|
+|-----+-----+------+------+---------+--------+------------+------------+---------|
+| E_1 | E_2 | Em_2 | Em_1 |    \tau |   \tau |     Output |       pump | Comment |
+|     |     |      |      | pumping | lasing |    \lambda |    \lambda |         |
+|     |     |      |      |    (ns) |   (ns) |    (\mu m) |    (\mu m) |         |
+|-----+-----+------+------+---------+--------+------------+------------+---------|
+| G   | A   | C    | D    |      10 |  10000 |   12.42375 |  0.6211875 | 4L      |
+| G   | B   | C    | D    |      10 |  10000 |   12.42375 | 0.65388158 | 4L      |
+| G   | A   | C    | F    |      10 |  10000 | 0.95567308 |  0.6211875 | 4L      |
+| G   | B   | C    | F    |      10 |  10000 | 0.95567308 | 0.65388158 | 4L      |
+| G   | A   | C    | E    |      10 |  10000 |   2.070625 |  0.6211875 | 4L      |
+| G   | B   | C    | E    |      10 |  10000 |   2.070625 | 0.65388158 | 4L      |
+| G   | B   | B    | E    |      10 |  10000 |  1.5529688 | 0.65388158 | 3L      |
+|-----+-----+------+------+---------+--------+------------+------------+---------|
+#+TBLFM: $5=10::$6=10^4::
+
 * Footnotes
 
 [fn:1] https://en.wikipedia.org/wiki/Chemical_bonding_of_water 
