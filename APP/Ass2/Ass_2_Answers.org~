@@ -1,0 +1,15 @@
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+OPTIONS: tags:t tasks:t text:t timestamp:t toc:nil todo:t |:t num:nil date:nil
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{titlesec}
+# #+LATEX_HEADER: \usepackage{subfigure}
+#+LATEX_HEADER: \usepackage{caption}
+#+LATEX_HEADER: \usepackage{subcaption}
+#+LATEX_HEADER: \usepackage{lipsum}
+
+#+TITLE: Classical and Quantum Optics
+#+SUBTITLE: Assignment-2 Answers
+#+AUTHOR: Varghese Reji
+
+* Problem 1
+

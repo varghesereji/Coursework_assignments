@@ -24,8 +24,178 @@ In the Einstein analysis we assume that the light radiation has a broad spectrum
   $$W_{12} = N_1 \frac{g_2}{g_1} \frac{\pi^2c^3}{\hbar n^3\omega'^3} \frac{1}{\tau} u_{\omega}g_{\omega}(\omega')$$
 - (d) :: Repeat the arguement to show that the total stimulated-emission rate is given by:
   $$W_{21} = N_2 \frac{\pi^2c^3}{\hbar n^3\omega'^3} \frac{1}{\tau} u_{\omega}g_{\omega}(\omega')$$
-  
+** Solution   
+- (a) :: The formula of energy density is 
+
+# [calc-mode: language: latex]
+
+#+NAME: energy_density
+\begin{equation}
+u(\omega) = \frac{\hbar \omega^3}{(c/n)^3 \pi^2}\frac{1}{\exp\left( \frac{\hbar \omega}{T k_B} \right) - 1}
+\end{equation}
+
+We are getting this by analysing the atomic transition. But in reality, there is a lot of other factors that affect the spectral width. Also, we are assuming that the light radiation had a broad spectrum compared to the transition line. But in this situation, we are taking the case which the 
+spectral width of light beam is much smaller than line width of transition. That means, it is narrower than [[energy_density]]. The best way to express this case is dirac delta function. So, it is appropriate to write the energy intensity as
+
+  $$u(\omega') = u_\omega\delta(\omega'-\omega)$$
+
+
+- (b) :: We have the equations
+    #+NAME: A_B
+\begin{equation}
+A_{21} = \frac{\hbar \omega^3}{(c/n)^3 \pi^2}  B_{21}^{\omega}
+\end{equation}
+
+But $A_{21}=\frac{1}{\tau}$. By solving this for $B_{21}$,
+
+\begin{equation}
+B_{21}^{\omega} = \frac{A_{21}(c/n)^3 \pi^2}{\hbar \omega^3}
+\end{equation}
+
+$B_{21}$ is the transition probability. But, the transition will depend on the frequency also. So, the total probability should be the product of probability for a particular frequency and $B$. Then, the resultant $B$ is,
+
+#+NAME: B_{21}
+\begin{equation}
+B_{21}^{\omega} = \frac{(c/n)^3 \pi^2}{\hbar \omega'^3\tau} g(\omega')
+\end{equation}
+
+By transforming this to $B_{12}$,
+
+\begin{equation}
+B_{12}^{\omega} = \frac{g_2}{g_1}\frac{(c/n)^3 \pi^2}{\hbar \omega'^3\tau} g(\omega')
+\end{equation}
+
+- (c) :: We have the results, 
+
+  $$u(\omega') = u_\omega\delta(\omega'-\omega)$$
+$$B_{12}^{\omega} = \frac{g_2}{g_1}\frac{(c/n)^3 \pi^2}{\hbar \omega'^3\tau} g(\omega')$$
+
+The absorption rate is,
+
+#+NAME: W_inte
+\begin{equation}
+W_{12} = N_1\int_0^{\infty} B_{12}(\omega') u(\omega') d\omega'
+\end{equation}
+By substituting to this,
+
+\begin{equation}
+\begin{split}
+W_{12} = &  N_1\int_0^{\infty} \frac{g_2}{g_1}\frac{(c/n)^3 \pi^2}{\hbar \omega'^3\tau} g(\omega')  u_\omega\delta(\omega'-\omega)d\omega'\\
+= & N_1\frac{g_2}{g_1}\frac{(c/n)^3 \pi^2}{\hbar \omega^3\tau} g(\omega) u_\omega
+\end{split}
+\end{equation}
+
+Then,
+
+#+NAME: 1c
+\begin{equation}
+W_{12} =  N_1\frac{g_2}{g_1}\frac{(c/n)^3 \pi^2}{\hbar \omega^3\tau} g(\omega) u_\omega
+\end{equation}
+
+- (d) :: Applying [[B_{21}]] to [[W_inte]], we will get,
+
+
+#+NAME: 1d
+\begin{equation}
+W_{21} =  N_2 \frac{(c/n)^3 \pi^2}{\hbar \omega^3\tau} g(\omega) u_\omega
+\end{equation}
+
+#+LATEX: \newpage
 * Problem 2
+Consider an atom interacting with a monochromatic beam of light with angular frequency $\omega$, where $\omega$ is close to a transition frequency \omega_0
+
+- (a) :: Use the results of [[Problem 1]] to show that the net rate of downward transitions (defined as the stimulated-emission rate less the absorption rate) is given by:
+
+  
+$$W_{21}^{net} = \frac{ c^3 \pi^2 }{h \tau n^3 \omega^2} \Delta N g_{\omega} u_{\omega}$$
+
+where $\Delta N = N_2 - \frac{g_2}{g_1} N_1$, $u_\omega$ is the energy per unit volume of the beam, and $g_\omega(\omega)$ is the spectral lineshape function.
+
+- (b) :: Show that optical intensity is given by $I=\frac{c u_\omega}{n}$
+
+- (c) :: Consider a unit area of beam propagating in the $+z$ direction through the medium. Show that the incremental increase in the intensity dI in a length element dz is given by:
+  $$dI = W_{21}^{net} \hbar\omega dz$$.
+- (d) :: Hence show that the gain coefficient is given by:
+
+  $$ \gamma(\omega) = \frac{\lambda^2}{4 n^2 \tau} \Delta N g_\omega(\omega) $$
+
+** Solutions
+- (a) By taking the difference of [[1c]] and [[1d]], 
+$$W_{21}^{net} = \left(N_2-\frac{g_2}{g_1}N_1\right) \frac{(c/n)^3 \pi^2}{\hbar \omega^3\tau} g(\omega) u_\omega $$
+
+But, $\Delta N = \left(N_2-\frac{g_2}{g_1}N_1\right)$.
+
+Then,
+
+$$W_{21}^{net} = \Delta N \frac{(c/n)^3 \pi^2}{\hbar \omega^3\tau} g(\omega) u_\omega $$
+
+- (b) :: By the definition of intensity, it is the power transmitted through unit area in space. $u_\omega$ is the energy density for a particular frequency $\omega$ and $c$ is the speed of light in free space. $n$ is the refractive index of medium.
+
+In a unit time, the light beam travels $c$ meters. Energy density is the energy per unit volume.  Let we consider a light beam as a cylinder with unit cross sectional area. It contains radiation energy E_\omega. Then, the energy density inside the cylinder will be $u_\omega = E/h$ where $h$ is the height of cylinder. But we know that a wavefront will travel $\frac{c}{n}$ meters per second in a medium. So, in unit time, it traveled $\frac{c}{n}$ distance. To get this, let us divide both numerator and denominator of expression for $u_\omega$ by $t$. Then in the numerator, it will be the intensity by definition. Denominator will become $\frac{c}{n}$. 
+
+$I = \frac{E}{t}, \frac{c}{n}=\frac{h}{t}$.
+
+Then, 
+
+$$\frac{In}{c} = u_\omega$$.
+
+$\Rightarrow$,
+
+$$I = \frac{c u_\omega}{n}$$.
+
+- (c) :: From the equation of radiative transfer, we know that
+  #+NAME: rad_trans
+  \begin{equation}
+   \frac{dI}{dz} = -(I \alpha)
+   \end{equation}
+   where $\alpha$ is the absorption coefficient.
+   But, transition probability per unit time for absorption is given by the formula $B_{12}\bar{J}$ where
+   $$\bar{J} = \int_0^{\infty} J_\nu g_\omega(\omega) d\omega$$
+   Using these, the absorption coefficient in this case is given by
+   $$dVdt \hbar\omega_0 N_1 B_{12}/2{-1} \int d\Omega \int d\omega g_\omega(\omega) I_\nu$$
+   Then, the energy absorbed out of a beam in frequency range $d\omega$ and solid angle d\Omega in time dt and volume dV is
+   $$dVdtd\Omega d\omega \hbar\omega N_1 B_{12} g_\omega(\omega) I $$
+   Now, there is no change in cross sectional area. So, we can take $dV=dz$. By plugg in these to the above equation, we will get
+   $$\alpha = \frac{\hbar\omega}{4\pi} N_1 B_{12} g_\omega(\omega)$$
+   For stimulated emission, calculations are same. So, the net absorption coefficient will be,
+   $$\alpha = \frac{\hbar\omega}{4\pi}  g_\omega(\omega)(N_1 B_{12}-N_2B_{21})$$
+   So,
+   $$\frac{dI}{dz} =- \frac{\hbar\omega}{4\pi}  g_\omega(\omega)(N_1 B_{12}-N_2B_{21}) I$$
+   Let us make some rearrangements.
+   \begin{equation}
+   \begin{split}
+   \frac{dI}{dz} = & \frac{\hbar\omega}{4\pi}  g_\omega(\omega)(N_1 B_{12}-N_2B_{21}) I \\
+   = & \frac{\hbar\omega}{4\pi}  \left(N_2-\frac{g_2}{g_1}N_1\right)\frac{(c/n)^3 \pi^2}{\hbar \omega^3\tau} g(\omega) \frac{u_\omega c}{n} \\
+   = & W_{21}^{net} \hbar\omega
+   \end{split}
+   \end{equation}
+   $\Rightarrow$
+   $$dI =W_{21}^{net} \hbar\omega dz $$[fn:4]
+
+- (d) :: Gain coefficient \gamma is defined in the equation,
+
+  $$\frac{dI}{dz} = \gamma I$$
+
+In previous questions, we got that,
+
+$$\frac{dI}{dz} = W_{21}^{net} \hbar \omega $$
+
+$\Rightarrow$
+
+\begin{equation}
+\begin{split}
+\frac{dI}{dz} = & W_{21}^{net} \hbar \omega \\
+= & \Delta N \frac{(c/n)^3 \pi^2}{\hbar \omega^3\tau} g(\omega) u_\omega \hbar \omega \\
+= & \Delta N \frac{(c/n)^2 \pi^2}{\hbar \omega^3\tau} g(\omega) \frac{c u_\omega}{n} \hbar \omega\\ 
+= & \Delta N \frac{(c/n)^2 \pi^2}{\hbar \omega^3\tau} g(\omega)  \hbar \omega I\\ 
+= & \Delta N \frac{(c/n)^2}{4\nu^2\tau} g(\omega) I\\ 
+= & \Delta N \frac{\lambda^2}{4n^2 \tau} g(\omega) I\\ 
+\end{split}
+\end{equation}
+
+$\Rightarrow$
+
+$$\gamma = \Delta N \frac{\lambda^2}{4n^2 \tau} g(\omega) I$$
 
 #+LATEX: \newpage
 * Problem 3
@@ -47,7 +217,45 @@ $$=\pi\epsilon_0\frac{w^2\left(1-\exp\left( \frac{-2 r^2}{w^2}\right)\right)}{4}
 So, the fraction of energy in distance $w$
 
 $$\frac{E(w)}{E(\infty)} = 1-e^{-2}=0.864 = 86.4\%$$
+#+LATEX: \newpage
+* Problem 4
+ A helium-neon laser consists of a laser tube of length 0.3m with mirrors bonded to the end of the tube. The output coupler has a reflectivity of $99\%$. The laser operates on the 632.8 nm transition of neon (relativve atomic mass 20.18), which has an Einstein A coefficient of $3.4\times 10^6s^{-1}$. The tube runs at $200^oC$ and the laser transition is Doppler-broadened. On the assumption that the only loss in the cavity is through the output coupler, that the average refractive index is equal to unity, and that the laser operates at the line centre, calculate:
+- (a) :: the gain coefficientt in the laser tube;
+- (b) :: the population inversion density.
+** Solution 
+$L=0.3m, R_2=0.99, \lambda = 632.8nm$, relative atomic mass = 20.18, A=3.4\times 10^6 s^{-1}, T=200^oC
+- (a) :: Gain coefficient, $$\gamma=-\frac{1}{2L}\ln(R_1R_2)-\frac{1}{2L}\ln(k)$$
+Then,
+$$\gamma = 0.01675$$
+- (b) :: Relation between gain coefficient \gamma and population inversion density $\Delta N$ is given by the formula,
 
+$$\gamma(\omega) 
+  = \frac{\lambda^2}{4 \Delta N \tau n^2 g_{\omega}(\omega)}$$
+
+where,
+
+$$g_\omega(\omega) = \frac{c}{\omega_0} \sqrt{\frac{m}{2 T \pi k_B}} \exp\left( \frac{mc^2 (\omega - \omega_0)^2}{-2 T k_B \omega_0} \right)$$
+
+But,
+
+\omega_0 =  2.97724399494\times 10^{15} Hz \approx 2.977 PHz
+
+
+# \evalto \frac{c}{\omega_0} \frac{m mp}{2 T 3.14 kB}^{0.5} \to 9.13641267938e-11
+
+If we are evaluating at the line center, $\omega=\omega_0$.
+
+Then, $g_\omega(\omega) \approx 9.136\times 10^{-11}$
+
+$$ \Delta N 
+  = \frac{\lambda^2}{4 \gamma(\omega_0) \tau n^2 g_{\omega}(\omega_0)}$$
+
+$\tau = \frac{1}{A}, n=1$
+
+Then,
+
+$$ \Delta N = \frac{A \lambda^2}{4\gamma(\omega_0) g_{\omega} (\omega_0)} = 222423.650574 $$
+#+LATEX: \newpage
 * Problem 5
 Estimate the Doppler and collision line widths of emission from $H_2O$ molecules at $\lambda = 0.5\mu m$, at 300K and atmospheric pressure. Assume the collision cross-section to be the same as the geometrical size of the molecule.
  
@@ -128,7 +336,6 @@ The solution of this is done in python. You can see the code [[https://github.co
 
 #+LATEX: \newpage
 
-
 * Problem 8
 Calculate and plot the intensity profile across the diameter of a laser spot of the $TEM_{00}$ and $TEM_{10}$ modes emanating from a resonator with circular symmetry. Next, do the same for a resonator with rectangular symmetry. Here, plot along the X axis. You may assume any numerical values of geometric parameter for the resonators if needed.
 
@@ -172,8 +379,7 @@ The figure had been shown below.
 
 [[file:laser_intensity.png]]
 
-
-
+#+LATEX: \newpage
 * Problem 9
 A material has six energy levels A to F at 2, 1.9, 1.7, 1.6, 1.1 and 0.4 eV above the ground state, G. The time constants for the various possible transitions in nanoseconds are shown in figure (Not adding here.) Suggest possible lasers working with this material, and give the pump and output wavelendths of each one.
 ** Solution
@@ -265,6 +471,8 @@ The output wavelength should be larger than pump wavelength. So, we will filter 
 #+TBLFM: $5=10::$6=10^4::
 
 * Footnotes
+
+[fn:4] Ref: Radiative Prosesses in Astrophysics, Lightman. 
 [fn:3] Ref: [[https://laser.physics.sunysb.edu/_alex/tmodes/webreport.html]] 
 
 [fn:2] Ref: Griffiths, Quantum Mechanics. 

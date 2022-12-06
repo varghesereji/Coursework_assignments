@@ -1,0 +1,42 @@
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+OPTIONS: tags:t tasks:t text:t timestamp:t toc:nil todo:t |:t num:nil date:nil
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{titlesec}
+# #+LATEX_HEADER: \usepackage{subfigure}
+#+LATEX_HEADER: \usepackage{caption}
+#+LATEX_HEADER: \usepackage{subcaption}
+#+LATEX_HEADER: \usepackage{lipsum}
+
+#+TITLE: Classical and Quantum Optics
+#+SUBTITLE: Assignment-2 Answers
+#+AUTHOR: Varghese Reji
+
+* Problem 1
+
+To create the upper confidence limit, we use the formula,
+
+#+NAME: UCI
+\begin{equation}
+P(x<x_1|\mu)=1-\alpha
+\end{equation}
+
+and for central interval, we use
+
+#+NAME: CI
+\begin{equation}
+P(x<x_1|mu)=P(x>x_2)=\frac{(1-\alpha)}{2}
+\end{equation}
+
+We will take the central interval 68% and upper limit 90%.
+
+- (a) :: Poisson Discrete random variable.
+#+NAME: PDRV
+  \begin{equation}
+P(x|\mu) = \frac{\mu^x}{x!}e^{-\mu}
+  \end{equation}
+
+  The plots are shown below.
+
+[[file:poisson_upper.png]]
+
+[[file:poisson_central.png]]

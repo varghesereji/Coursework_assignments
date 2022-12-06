@@ -1,0 +1,23 @@
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+
+def poisson_distribution(x, mu):
+    func = (mu**x/factorial(x)) * np.exp(-mu)
+    return func
+
+
+x = np.linspace(0, 10, 1)
+pdf = poisson_distribution(x, 0)
+
+plt.figure()
+plt.plot(x, pdf)
+plt.show(block=False)
