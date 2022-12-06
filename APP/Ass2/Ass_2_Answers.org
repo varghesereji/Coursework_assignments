@@ -13,6 +13,9 @@
 
 * Problem 1
 
+The python code to solve this question is given [[https://github.com/varghesereji/Coursework_assignments/blob/main/APP/Ass2/Problem_1.py][here]].
+
+
 To create the upper confidence limit, we use the formula,
 
 #+NAME: UCI

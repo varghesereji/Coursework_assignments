@@ -1,4 +1,4 @@
-% Created 2022-12-06 Tue 22:40
+% Created 2022-12-06 Tue 22:46
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -33,29 +33,32 @@
 \maketitle
 
 \section*{Problem 1}
-\label{sec:orgcf01c6e}
+\label{sec:org7c96486}
+
+The python code to solve this question is shown \href{https://github.com/varghesereji/Coursework\_assignments/blob/main/APP/Ass2/Problem\_1.py}{here}.
+
 
 To create the upper confidence limit, we use the formula,
 
 \begin{equation}
-\label{eq:org172ab58}
+\label{eq:orgc9bbe45}
 P(x<x_1|\mu)=1-\alpha
 \end{equation}
 
 and for central interval, we use
 
 \begin{equation}
-\label{eq:org012b271}
+\label{eq:org78425d3}
 P(x<x_1|mu)=P(x>x_2)=\frac{(1-\alpha)}{2}
 \end{equation}
 
-We will take the central interval 68$\backslash$% and upper limit 90$\backslash$%.
+We will take the central interval 68\% and upper limit 90\%.
 
 \begin{description}
 \item[{(a)}] Poisson Discrete random variable.
 \end{description}
   \begin{equation}
-\label{eq:org46ac0ef}
+\label{eq:orgcea51cc}
 P(x|\mu) = \frac{\mu^x}{x!}e^{-\mu}
   \end{equation}
 
