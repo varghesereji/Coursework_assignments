@@ -34,12 +34,32 @@ We will take the central interval 68% and upper limit 90%.
 
 - (a) :: Poisson Discrete random variable.
 #+NAME: PDRV
-  \begin{equation}
+\begin{equation}
 P(x|\mu) = \frac{\mu^x}{x!}e^{-\mu}
-  \end{equation}
+\end{equation}
 
   The plots are shown below.
 
 [[file:poisson_upper.png]]
 
 [[file:poisson_central.png]]
+
+- (b) :: Uniform distribution. Here, $k=2\mu$.
+
+  Here, I took $k=100$. Plots are shown here.
+  [[file:uniform_upper.png]]
+  
+  [[file:uniform_central.png]]
+
+- (c) :: Gaussian function with $\sigma=1$.
+
+ 
+#+NAME: gaussian_func
+\begin{equation}
+P(x|\mu) = \frac{1}{\sqrt{2\pi}} \exp\left(\frac{(x-\mu)^2}{2}\right)
+  \end{equation}
+
+
+  [[file:gaussian_upper.png]]
+
+  [[file:gaussian_central.png]]

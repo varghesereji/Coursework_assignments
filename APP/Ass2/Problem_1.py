@@ -133,6 +133,7 @@ def poisson():
     plt.grid()
     # plt.show(block=False)
     plt.savefig('poisson_central.png')
+    return 0
 
 
 def gaussian():
@@ -197,8 +198,79 @@ def gaussian():
     plt.grid()
     # plt.show(block=False)
     plt.savefig('gaussian_central.png')
+    return 0
 
 
-gaussian()
-poisson()
+def uniform():
+    # Upper Limit
+    mu = 1
+    x_vs = []
+    mu_vs = []
+    while mu < 100:
+        k = 2 * mu
+        x = np.arange(0, k, 1)
+        print(x)
+        pdf = 1/k + np.zeros(len(x))
+        plt.figure()
+        for q, P in enumerate(pdf):
+            cl = summation(pdf[:q+1])
+            print(mu,'x', x[q], 'P', P, 'limit', cl)
+            if upper_limit(cl, ALPHA_UPPER) is True:
+                x_vs.append(x[q])
+                print('we got it', x_vs)
+                mu_vs.append(mu)
+                break
+        mu += 1
+    plt.figure()
+    plt.plot(x_vs, mu_vs, 'o-')
+    plt.title('Uniform, Upper limit 90%')
+    plt.xlabel('Measured x')
+    plt.ylabel('$\mu$')
+    plt.grid()
+    # plt.show(block=False)
+    plt.savefig('uniform_upper.png')
+
+    # Central Interval
+    # print('Central Interval')
+    x_1 = []
+    x_2 = []
+    mu_vs_cl = []
+    mu = 1
+    while mu < 100:
+        k = 2 * mu
+        x = np.arange(0, k, 1)
+        pdf = 1/k + np.zeros(len(x))
+        for q, P in enumerate(pdf):
+            cl = summation(pdf[:q+1])
+            # print(x[q], P, cl)
+            if central_lower_limit(cl, ALPHA_CENTRAL) is True:
+               # print('we got lower it')
+                for r, l in enumerate(x[q+1:]):
+                #    print(r, q, r+q+1)
+                    cl_u = summation(pdf[-(r+1):-1])
+                    if central_upper_limit(cl_u, ALPHA_CENTRAL) is True:
+                        print(cl, cl_u)
+                        x_2.append(x[-r-1])
+                        x_1.append(x[q])
+                        mu_vs_cl.append(mu)
+                        break
+                break
+        mu += 1
+    # print(x_1)
+    # print(x_2)
+    plt.figure()
+    plt.plot(x_1, mu_vs_cl, 'o-')
+    plt.plot(x_2, mu_vs_cl, 'o-')
+    plt.title('Uniform, central limit 68%')
+    plt.xlabel('Measured x')
+    plt.ylabel('$\mu$')
+    plt.grid()
+    # plt.show(block=False)
+    plt.savefig('uniform_central.png')
+    # return 0
+
+
+uniform()
+# gaussian()
+# poisson()
 # Code ends here
