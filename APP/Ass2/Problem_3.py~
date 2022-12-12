@@ -1,0 +1,48 @@
+# This code is to solve question 3.
+import numpy as np
+
+
+def factorial_array(n_array):
+    n_fact = []
+    for i, n in enumerate(n_array):
+        n_fact.append(np.math.factorial(n))
+    return np.array(n_fact)
+
+
+def poisson_function(n_array, mu=0.5, b=3.0):
+    factorials = factorial_array(n_array)
+    return (mu+b)**n_array*np.exp(-(mu+b))/factorials
+
+
+def filter_max(n_array, b=3.0):
+    n_array_max = []
+    for i, n in enumerate(n_array):
+        n_array_max.append(max(0, n-b))
+    return np.array(n_array_max)
+
+
+def r_value(n, mu_best, mu=0.5, b=3.0):
+    p1 = poisson_function(n, mu, b)
+    p2 = poisson_function(n, mu_best, b)
+    return p1 / p2
+
+
+# for n in range(0, 12):
+#     mu_best = best_mu(n)
+#     R = r_value(n, mu_best)
+#     print('|', n, '|', poisson_function(n),
+#           '|', mu_best, '|', poisson_function(n, mu_best), '|', R, '|')
+
+n_values = np.arange(0, 12, 1)
+print(n_values)
+p_mu = poisson_function(n_values)
+print(n_values)
+print(p_mu)
+mu_best = filter_max(n_values)
+print(mu_best)
+p_mu_best = poisson_function(n_values, mu_best)
+print(p_mu_best)
+r_values = r_value(n_values, mu_best)
+print(r_values)
+print(np.sort(r_values, reverse=True))
+# End

@@ -1,4 +1,4 @@
-% Created 2022-12-10 Sat 21:58
+% Created 2022-12-12 Mon 18:58
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -33,9 +33,9 @@
 \maketitle
 
 \section*{Problem 1}
-\label{sec:orgd4f9378}
+\label{sec:orged36dcd}
 
-A beam with a photon flux of 1000 photons s\textsuperscript{-1} is incident on a detector with a quantum efficiencyj of 20\%. If the time interval of the counter is set to 10s, calculate the average and standard deviation of the photocount number for the followin g scenarios:
+A beam with a photon flux of 1000 photons s\textsuperscript{-1} is incident on a detector with a quantum efficiency of 20\%. If the time interval of the counter is set to 10s, calculate the average and standard deviation of the photocount number for the followin g scenarios:
 \begin{description}
 \item[{(a)}] the light has Poissonian statistics;
 \item[{(b)}] the light has super-Poissonian statistics with \(\Delta\) n=2\texttimes{} \(\Delta\) n\textsubscript{Poisson} ;
@@ -43,23 +43,32 @@ A beam with a photon flux of 1000 photons s\textsuperscript{-1} is incident on a
 \end{description}
 
 \subsection*{Answer}
-\label{sec:org7dbd680}
+\label{sec:orge5a9ebf}
 \(\phi\) = 1000/s, \(\eta\)=20\%, t=10s
 
 \begin{description}
-\item[{(a)}] \(\bar{n} = \eta \frac{L \phi}{c}\)
+\item[{(a)}] \(\bar{n} = \frac{L \phi}{c}\)
 
-But, \(L=ct \Rightarrow \bar{n} = \eta t \phi\)
+But, \(L=ct \Rightarrow \bar{n} = t \phi\)
+
+Then, \(\bar{n} = 10000\).\$
+
+\(\Delta n = \sqrt{n} = 100\)
+
+The photocount number is given by, $$(\Delta N)^2 = \eta^2(\Delta n)^2 + \eta(1-\eta) \bar{n}$$
+
+\(\Rightarrow\), $$\Delta N = 44.721$$.
+
+$$\bar{N} = \eta \bar{n} = 2000$$
 \end{description}
-\(\therefore\) \(\bar{n} = 2000\).
 
-Since light follows poisson statistics, \(\Delta n =\sqrt{\bar{n}}\).
-
-Then, \(\Delta n = 44.721\).
 
 \begin{description}
 \item[{(b)}] Given \(\Delta n = 2\times \Delta n_{Poisson}\).
 i.e., \(\Delta n = 89.442\)
+\end{description}
+
+
 
 We know that, for super poissonian statistics,
 
@@ -68,30 +77,31 @@ $$(\Delta n)^2 = \bar{n} + \bar{n}^2$$.
 \(\Rightarrow\)
 
 $$ \bar{n} + \bar{n}^2 = 4 \bar{n}_{Poiss}^2 = 8000$$
-\end{description}
 
 By solving this,
 
 $$\bar{n} =88.944$$
 
+
+$$\Delta N = 18.28, \bar{N} = 17.79$$
+
 \begin{description}
-\item[{(c)}] In phton number state, \(\Delta n=0\). That means, there is no variation from mean value. Then, \(\bar{n} = 2000\)
+\item[{(c)}] In phton number state, \(\Delta n=0\). That means, there is no variation from mean value. Then, \(\bar{n} = 10000\)
 \end{description}
 
-
-
-
+\(\Rightarrow\)
+$$\bar{N} = 2000, \Delta N = 40$$
 
 \section*{Problem 2}
-\label{sec:org2deafe1}
+\label{sec:org1643581}
 Calculate the values of g\textsuperscript{(2)}(0) for a monochromatic light wave with a square wave intensity modulation of \textpm{} 20\%.
 
 \section*{Problem 3}
-\label{sec:org94a48c6}
+\label{sec:org0e78fa2}
 The 632.8 nm line of a neon discharge lamp is Doppler-broadened with a linewidth of 1.5GHz. Sketch the second-order correlation function g\textsuperscript{(2)}(\(\tau\)) for \(\tau\) in range 0-1 ns.
 
 \section*{Problem 4}
-\label{sec:org4b51009}
+\label{sec:orgd33c5fb}
 For the coherent states |\(\alpha\)> with \(\alpha\)=5, calculate
 \begin{description}
 \item[{(a)}] the mean photon number;
@@ -100,15 +110,15 @@ For the coherent states |\(\alpha\)> with \(\alpha\)=5, calculate
 \end{description}
 
 \section*{Problem 5}
-\label{sec:orgeefcfbe}
+\label{sec:org5c7c02c}
 A ruby laser operating at 693 nm emits pulses of energy 1mJ. Calculate the quantum uncertinity in the phase of the laser light.
 
 \section*{Problem 6}
-\label{sec:org7fdba05}
+\label{sec:orgda3dc16}
 For the coherent state |\(\alpha\)> with \(\alpha\)=|\(\alpha\)|e\textsuperscript{i\(\phi\)}, show that \(<\alpha|\hat{X}_1|\alpha>=|\alpha|\cos\phi\) and \(<\alpha|\hat{X}_2|\alpha>=|\alpha|\sin\phi\). Show further that \(\Delta X_1 = \Delta X_2 = \frac{1}{2}\).
 
 \section*{Problem 7}
-\label{sec:org3c4526a}
+\label{sec:orgab3a86f}
 Prove that for two coherent states |\(\alpha\)> and |\(\beta\)>,
 $$|<\alpha|\beta>|^2=\exp(-|\alpha-\beta|^2)$$
 \end{document}

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import scipy.integrate as integrate
 
 ALPHA_UPPER = 0.9
-ALPHA_CENTRAL = 0.68
+ALPHA_CENTRAL = 0.9
 
 
 def factorial(n):
@@ -72,13 +72,13 @@ def central_upper_limit(cl, alpha):
 
 
 def poisson():
-    x = np.arange(0, 10, 1)
+    x = np.arange(0, 15, 1)
     mu = 0
     # Upper Limit
     x_vs = []
     mu_vs = []
     while mu < 10:
-        pdf = poisson_function(x, mu)
+        pdf = poisson_function(x, mu+3)
         for q, P in enumerate(pdf):
             cl = summation(pdf[:q+1])
             print(x[q], P, cl)
@@ -87,7 +87,7 @@ def poisson():
                 x_vs.append(x[q])
                 mu_vs.append(mu)
                 break
-        mu += 1
+        mu += 0.5
 
     plt.figure()
     plt.plot(x_vs, mu_vs, 'o-')
@@ -96,7 +96,7 @@ def poisson():
     plt.ylabel('$\mu$')
     plt.grid()
     # plt.show(block=False)
-    plt.savefig('poisson_upper.png')
+    plt.savefig('Q3_poisson_upper.png')
 
     # Central Interval
     print('Central Interval')
@@ -105,7 +105,7 @@ def poisson():
     mu_vs_cl = []
     mu = 0
     while mu < 10:
-        pdf = poisson_function(x, mu)
+        pdf = poisson_function(x, mu+3.0)
         for q, P in enumerate(pdf):
             cl = summation(pdf[:q+1])
             print(x[q], P, cl)
@@ -121,18 +121,18 @@ def poisson():
                         mu_vs_cl.append(mu)
                         break
                 break
-        mu += 1
+        mu += 0.5
     print(x_1)
     print(x_2)
     plt.figure()
     plt.plot(x_1, mu_vs_cl, 'o-')
     plt.plot(x_2, mu_vs_cl, 'o-')
-    plt.title('Poisson, central limit 68%')
+    plt.title('Poisson, central limit 90%')
     plt.xlabel('Measured x')
     plt.ylabel('$\mu$')
     plt.grid()
     # plt.show(block=False)
-    plt.savefig('poisson_central.png')
+    plt.savefig('Q3_poisson_central.png')
     return 0
 
 
@@ -270,7 +270,7 @@ def uniform():
     # return 0
 
 
-uniform()
+# uniform()
 # gaussian()
-# poisson()
+poisson()
 # Code ends here

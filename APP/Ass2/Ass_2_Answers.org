@@ -85,6 +85,15 @@ But without flip-flopping, using the second statement only, the result will be u
 [[file:fig_4.png]]
 
 
+* Problem 3
+Here, we use a backgroung b=3.0. ( It is mentioned in the paper). Values of \mu is from 0 to 50 with an interval 0.5.
+
+The plots are shown below.
+
+[[file:pr3_ul.png]]
+
+[[file:pr3_cl.png]]
+
 * References
 bibliography:~/MEGAsync/References/Bibliography.bib
 bibliographystyle:unsrt

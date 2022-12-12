@@ -13,7 +13,7 @@
 
 * Problem 1
 
-A beam with a photon flux of 1000 photons s^{-1} is incident on a detector with a quantum efficiencyj of 20%. If the time interval of the counter is set to 10s, calculate the average and standard deviation of the photocount number for the followin g scenarios:
+A beam with a photon flux of 1000 photons s^{-1} is incident on a detector with a quantum efficiency of 20%. If the time interval of the counter is set to 10s, calculate the average and standard deviation of the photocount number for the followin g scenarios:
 - (a) :: the light has Poissonian statistics;
 - (b) :: the light has super-Poissonian statistics with \Delta n=2\times \Delta n_{Poisson} ;
 - (c) :: the light is in a photon number state.
@@ -21,18 +21,26 @@ A beam with a photon flux of 1000 photons s^{-1} is incident on a detector with 
 ** Answer
 \phi = 1000/s, \eta=20%, t=10s
 
-- (a) :: $\bar{n} = \eta \frac{L \phi}{c}$
+- (a) :: $\bar{n} = \frac{L \phi}{c}$
 
-  But, $L=ct \Rightarrow \bar{n} = \eta t \phi$
-\therefore $\bar{n} = 2000$.
+  But, $L=ct \Rightarrow \bar{n} = t \phi$
 
-Since light follows poisson statistics, $\Delta n =\sqrt{\bar{n}}$.
+  Then, $\bar{n} = 10000$.$
 
-Then, $\Delta n = 44.721$.
+  $\Delta n = \sqrt{n} = 100$
+
+  The photocount number is given by, $$(\Delta N)^2 = \eta^2(\Delta n)^2 + \eta(1-\eta) \bar{n}$$
+
+  $\Rightarrow$, $$\Delta N = 44.721$$.
+
+  $$\bar{N} = \eta \bar{n} = 2000$$
+
 
 - (b) :: Given $\Delta n = 2\times \Delta n_{Poisson}$.
   i.e., $\Delta n = 89.442$
 
+  
+  
   We know that, for super poissonian statistics,
 
   $$(\Delta n)^2 = \bar{n} + \bar{n}^2$$.
@@ -45,11 +53,13 @@ By solving this,
 
 $$\bar{n} =88.944$$
 
-- (c) :: In phton number state, $\Delta n=0$. That means, there is no variation from mean value. Then, $\bar{n} = 2000$
 
+$$\Delta N = 18.28, \bar{N} = 17.79$$
 
+- (c) :: In phton number state, $\Delta n=0$. That means, there is no variation from mean value. Then, $\bar{n} = 10000$
 
-
+$\Rightarrow$
+$$\bar{N} = 2000, \Delta N = 40$$
 
 * Problem 2
 Calculate the values of g^{(2)}(0) for a monochromatic light wave with a square wave intensity modulation of \pm 20%.

@@ -1,4 +1,4 @@
-% Created 2022-12-10 Sat 11:13
+% Created 2022-12-10 Sat 11:14
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -33,7 +33,7 @@
 \maketitle
 
 \section*{Problem 1}
-\label{sec:org66f5da5}
+\label{sec:org1f6f241}
 
 The python code to solve this question is given \href{https://github.com/varghesereji/Coursework\_assignments/blob/main/APP/Ass2/Problem\_1.py}{here}.
 
@@ -41,14 +41,14 @@ The python code to solve this question is given \href{https://github.com/varghes
 To create the upper confidence limit, we use the formula,
 
 \begin{equation}
-\label{eq:org150b5c1}
+\label{eq:org9c56ebd}
 P(x<x_1|\mu)=1-\alpha
 \end{equation}
 
 and for central interval, we use
 
 \begin{equation}
-\label{eq:orgab48911}
+\label{eq:orgbc13703}
 P(x<x_1|mu)=P(x>x_2)=\frac{(1-\alpha)}{2}
 \end{equation}
 
@@ -58,7 +58,7 @@ We will take the central interval 68\% and upper limit 90\%.
 \item[{(a)}] Poisson Discrete random variable.
 \end{description}
 \begin{equation}
-\label{eq:orgc47a491}
+\label{eq:org2464f06}
 P(x|\mu) = \frac{\mu^x}{x!}e^{-\mu}
 \end{equation}
 
@@ -89,7 +89,7 @@ Here, I took \(k=100\). Plots are shown here.
 
 
 \begin{equation}
-\label{eq:org06506b2}
+\label{eq:org0dfab9d}
 P(x|\mu) = \frac{1}{\sqrt{2\pi}} \exp\left(\frac{(x-\mu)^2}{2}\right)
   \end{equation}
 
@@ -103,7 +103,7 @@ P(x|\mu) = \frac{1}{\sqrt{2\pi}} \exp\left(\frac{(x-\mu)^2}{2}\right)
 \end{center}
 
 \section*{Problem 2}
-\label{sec:org1f16096}
+\label{sec:org21ea4e9}
 
 Let us consier an experiment done by Physicist X. He makes the following statements.
 \begin{description}
@@ -111,25 +111,25 @@ Let us consier an experiment done by Physicist X. He makes the following stateme
 \item[{(2)}] If my measured value of a physically positive quantity is negative, I will pretend that I measured zero when quoting a confidence interval.\cite{1998}
 \end{description}
 
-The first one is called 'flip-flopping'. Second one will introduce some conservatism. Using these statements, we can make the plot shown in fig \ref{fig:org2c55f44}. For each value of the measured x, we can extimate the segment [\(\mu\)\textsubscript{1}, \(\mu\)\textsubscript{2}] by drawing a vertical line. Then we can examing the collection of vertical confidence intervals to see what horizontal acceptance intervals it implits. But in some cases, it does not satisfy the equation
+The first one is called 'flip-flopping'. Second one will introduce some conservatism. Using these statements, we can make the plot shown in fig \ref{fig:org2aaa842}. For each value of the measured x, we can extimate the segment [\(\mu\)\textsubscript{1}, \(\mu\)\textsubscript{2}] by drawing a vertical line. Then we can examing the collection of vertical confidence intervals to see what horizontal acceptance intervals it implits. But in some cases, it does not satisfy the equation
 
 \begin{equation}
-\label{eq:org6237673}
-P(x\implits[x_1, x_2]|\mu)=\alpha
+\label{eq:org336459a}
+P(x\in[x_1, x_2]|\mu)=\alpha
 \end{equation}
 
-Suppose \$\(\mu\)=2.0, the accaptance interval has x\textsubscript{1}=2-1.28 and x\textsubscript{2}=2+1.64. But this interval only contains 85\% of the probability. That means, \ref{eq:org6237673} is not satisfied. The interval is undercover for a significant range of \(\mu\): they are not confidence intervals or conservative confidence intervals.
+Suppose \$\(\mu\)=2.0, the accaptance interval has x\textsubscript{1}=2-1.28 and x\textsubscript{2}=2+1.64. But this interval only contains 85\% of the probability. That means, \ref{eq:org336459a} is not satisfied. The interval is undercover for a significant range of \(\mu\): they are not confidence intervals or conservative confidence intervals.
 
 But without flip-flopping, using the second statement only, the result will be unsatisfying when we get x as negative values. In that case, when we draw a vertical line as directed and finds that the confidence interval in empty set. So these are the issues we are facing at the moment, and these can be solved by using ordering principle. That's why ordering principle is relevant.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{fig_4.png}
-\caption{\label{fig:org2c55f44}Plot of confidenc belts made based on statements. \cite{1998}}
+\caption{\label{fig:org2aaa842}Plot of confidenc belts made based on statements. \cite{1998}}
 \end{figure}
 
 
 \section*{References}
-\label{sec:orge2224c1}
+\label{sec:orgffb0890}
 \bibliography{../../../References/Bibliography}
 \bibliographystyle{unsrt}
 \end{document}
