@@ -63,3 +63,28 @@ P(x|\mu) = \frac{1}{\sqrt{2\pi}} \exp\left(\frac{(x-\mu)^2}{2}\right)
   [[file:gaussian_upper.png]]
 
   [[file:gaussian_central.png]]
+
+* Problem 2
+
+Let us consier an experiment done by Physicist X. He makes the following statements.
+- (1) :: If the result $x$ is less than 3\sigma , I will state an upper limit from the standard tables. If the result is less than 3\sigma, I will state a central confidence interval from the standard tables.
+- (2) :: If my measured value of a physically positive quantity is negative, I will pretend that I measured zero when quoting a confidence interval.[[cite:&1998]]
+
+The first one is called 'flip-flopping'. Second one will introduce some conservatism. Using these statements, we can make the plot shown in fig [[fig_4]]. For each value of the measured x, we can extimate the segment [\mu_1, \mu_2] by drawing a vertical line. Then we can examing the collection of vertical confidence intervals to see what horizontal acceptance intervals it implits. But in some cases, it does not satisfy the equation
+
+#+NAME: eq2.4
+\begin{equation}
+P(x\in[x_1, x_2]|\mu)=\alpha
+\end{equation}
+
+Suppose $\mu=2.0, the accaptance interval has x_1=2-1.28 and x_2=2+1.64. But this interval only contains 85% of the probability. That means, [[eq2.4]] is not satisfied. The interval is undercover for a significant range of \mu: they are not confidence intervals or conservative confidence intervals.
+
+But without flip-flopping, using the second statement only, the result will be unsatisfying when we get x as negative values. In that case, when we draw a vertical line as directed and finds that the confidence interval in empty set. So these are the issues we are facing at the moment, and these can be solved by using ordering principle. That's why ordering principle is relevant.
+#+CAPTION: Plot of confidenc belts made based on statements. [[cite:&1998]]
+#+NAME: fig_4
+[[file:fig_4.png]]
+
+
+* References
+bibliography:~/MEGAsync/References/Bibliography.bib
+bibliographystyle:unsrt
