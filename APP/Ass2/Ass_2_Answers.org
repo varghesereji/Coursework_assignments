@@ -88,12 +88,23 @@ But without flip-flopping, using the second statement only, the result will be u
 * Problem 3
 Here, we use a backgroung b=3.0. ( It is mentioned in the paper). Values of \mu is from 0 to 50 with an interval 0.5.
 
-The plots are shown below.
+The plots are shown below. The code to make this is given [[https://github.com/varghesereji/Coursework_assignments/blob/main/APP/Ass2/Problem_3.py][here.]]
 
 [[file:pr3_ul.png]]
 
 [[file:pr3_cl.png]]
 
+* Problem 4
+If the sigma is not sure, we have to do the construction for two parameters, which are uncorrelated. Then, take the values of each of the separately, like find construction of mu for a particular value of sigma, then change value of sigma, redo this again. Then we can plot all these in same graph. It is shown below.
+
+[[file:gaussian_upper_diff_sigma.png]]
+
+[[file:gaussian_central_diff_sigma.png]]
+
+We can plot it as 3d map also. But for simplicity for plotting, I am not trying to do that. But 3d plot is more good to solve the issue. In previous case, we drawn a straight line corresponding to a particular x. Here. it should be a plane at a particular point of x. Then the space that covers the plane and other surfaces will be thee confidence region. This is for both central and upper limits.
+
+
+ 
 * References
 bibliography:~/MEGAsync/References/Bibliography.bib
 bibliographystyle:unsrt

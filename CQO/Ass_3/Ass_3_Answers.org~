@@ -1,3 +1,4 @@
+
 #+LATEX_CLASS_OPTIONS: [a4paper,11pt]
 #+OPTIONS: tags:t tasks:t text:t timestamp:t toc:nil todo:t |:t num:nil date:nil
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
@@ -13,16 +14,104 @@
 
 * Problem 1
 
-A beam with a photon flux of 1000 photons s^{-1} is incident on a detector with a quantum efficiencyj of 20%. If the time interval of the counter is set to 10s, calculate the average and standard deviation of the photocount number for the followin g scenarios:
+A beam with a photon flux of 1000 photons s^{-1} is incident on a detector with a quantum efficiency of 20%. If the time interval of the counter is set to 10s, calculate the average and standard deviation of the photocount number for the followin g scenarios:
 - (a) :: the light has Poissonian statistics;
 - (b) :: the light has super-Poissonian statistics with \Delta n=2\times \Delta n_{Poisson} ;
 - (c) :: the light is in a photon number state.
 
+** Answer
+\phi = 1000/s, \eta=20%, t=10s
+
+- (a) :: $\bar{n} = \frac{L \phi}{c}$
+
+  But, $L=ct \Rightarrow \bar{n} = t \phi$
+
+  Then, $\bar{n} = 10000$.$
+
+  $\Delta n = \sqrt{n} = 100$
+
+  The photocount number is given by, $$(\Delta N)^2 = \eta^2(\Delta n)^2 + \eta(1-\eta) \bar{n}$$
+
+  $\Rightarrow$, $$\Delta N = 44.721$$.
+
+  $$\bar{N} = \eta \bar{n} = 2000$$
+
+
+- (b) :: Given $\Delta n = 2\times \Delta n_{Poisson}$.
+  i.e., $\Delta n = 89.442$
+
+  
+  
+  We know that, for super poissonian statistics,
+
+  $$(\Delta n)^2 = \bar{n} + \bar{n}^2$$.
+
+  $\Rightarrow$
+
+  $$ \bar{n} + \bar{n}^2 = 4 \bar{n}_{Poiss}^2 = 8000$$
+
+By solving this,
+
+$$\bar{n} =88.944$$
+
+
+$$\Delta N = 18.28, \bar{N} = 17.79$$
+
+- (c) :: In phton number state, $\Delta n=0$. That means, there is no variation from mean value. Then, $\bar{n} = 10000$
+
+$\Rightarrow$
+$$\bar{N} = 2000, \Delta N = 40$$
+
 * Problem 2
 Calculate the values of g^{(2)}(0) for a monochromatic light wave with a square wave intensity modulation of \pm 20%.
 
+** Answer
+
+$$g^(2)(0) = \frac{<I(t)^2>}{<I(t)>^2}$$
+
+Since the intensity modulation is A=0.2, let us write, $$I(t) = I_0(1+0.2\Theta(T/2))$$
+
+$\Theta$ is a square pulse.
+$$<I(t)>^2 = I_0^2$$
+
+$$<I(t)^2> = \frac{I_0^2}{T} \int_0^{T} (1+0.2\Theta(T/2)) ^2$$
+
+Then,
+\begin{equation*}
+\begin{split}
+g^{(2)}(0) & = \frac{1}{T} \int_0^T dt (1+0.2\Theta(T/2))^2 \\
+ & = \frac{1}{T} \left[\int_0^Tdt+0.4\int_0^{T/2}dt+0.04\int_0^{T/2}dt\right] \\
+& = 1+0.2+0.02\\
+& = 1.22
+\end{split}
+\end{equation*}
+
+
+Then, $$g^(2)(0) = 1.22$$
+
+
 * Problem 3
 The 632.8 nm line of a neon discharge lamp is Doppler-broadened with a linewidth of 1.5GHz. Sketch the second-order correlation function g^{(2)}(\tau) for \tau in range 0-1 ns.
+
+** Answer
+The coherence time is given by the formula
+
+$$\tau_c = \frac{\lambda^2}{c\delta \lambda}$$
+
+Given, $\Delta \nu = 1.5GHz$.
+
+And, $d\lambda = \frac{c}{\lambda^2} d\nu \Rightarrow \tau_c = \frac{1}{d\nu}$
+
+$\therefore$
+
+$$\tau_c = 6.67e-10s = .667 ns$$
+
+From Mark Fox,
+
+$$g^{(2)}(\tau) = 1+\exp\left[-\pi\left(\frac{\tau}{\tau_c}\right)^2\right]$$
+
+[[file:pr3_plot.png]]
+
 
 * Problem 4
 For the coherent states |\alpha> with \alpha=5, calculate
@@ -30,6 +119,12 @@ For the coherent states |\alpha> with \alpha=5, calculate
 - (b) :: the standard deviation in the photon number;
 - (c) :: the quantum uncertinity in the optical phase.
 
+** Answer
+- (a) :: $\alpha = 5$. Then, $\bar{n} = |\alpha|^2 = 25$
+
+- (b) :: $\Delta n = |\alpha| = 5$
+
+- (c) :: $\Delta \phi = \frac{\text{uncertinity diameter}}{\alpha} = \frac{1/2}{5} = \frac{1}{10}$
 * Problem 5
 A ruby laser operating at 693 nm emits pulses of energy 1mJ. Calculate the quantum uncertinity in the phase of the laser light.
 
